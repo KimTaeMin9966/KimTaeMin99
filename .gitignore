@@ -1,0 +1,9 @@
+/.git/
+/.metadata/
+/Servers/
+/BoardSample_MVC/
+
+*.zip
+/boot0[0-9]/
+/Sample/
+/.recommenders/

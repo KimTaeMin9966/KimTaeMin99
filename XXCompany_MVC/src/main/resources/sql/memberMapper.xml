@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.XXCompany.dao.MemberDao">
+	<insert id="registerPostMethod">
+		INSERT INTO XXCompany_Member(username, joindate, password)
+		VALUES (#{username}, #{joindate}, #{password})
+	</insert>
+	<select id="Login" resultType="mbvo">
+		SELECT * FROM XXCompany_Member
+		WHERE joindate = #{joindate} AND password = #{password} AND isOut = 0
+	</select>
+	<select id="profilesGetMethod" resultType="mbvo">
+		SELECT * FROM XXCompany_Member WHERE username = #{username}
+	</select>
+</mapper>
