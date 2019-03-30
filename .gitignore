@@ -1,9 +1,11 @@
 /.git/
 /.metadata/
-/Servers/
+/.recommenders/
 /BoardSample_MVC/
+/BoardSample_MVC/src/main/webapp/WEB-INF/properties/
+/XXCompany_MVC/src/main/webapp/WEB-INF/properties/
+/Servers/
 
 *.zip
 /boot0[0-9]/
 /Sample/
-/.recommenders/
