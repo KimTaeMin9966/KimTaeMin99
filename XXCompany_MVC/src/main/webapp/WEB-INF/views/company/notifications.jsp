@@ -53,7 +53,7 @@
 												${notification.title} [${notification.commentCnt}]
 											</a>
 										</td>
-										<td>${boardVo.writer}</td>
+										<td>${notification.writer}</td>
 										<td>
 											<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${notification.regdate}" />
 										</td>

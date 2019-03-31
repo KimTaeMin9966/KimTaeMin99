@@ -23,8 +23,8 @@
 			<section class="content">
 				<div class="row">
 					<div class="col-md-12">
-						<form role="form" method="post" action="/company/writeSubmit">
-							<div class="box box-warning">
+						<div class="box box-warning">
+							<form role="form" method="post" action="/company/writeSubmit">
 								<div class="box-header with-border">
 									<h3 class="box-title">게시물 읽기</h3>
 								</div>
@@ -45,8 +45,26 @@
 									<button type="button" onclick="location.href='/company/notificationsEditPage?type=notification&bno=${notification.bno}'" class="btn btn-warning">게시글 수정</button>
 									<button type="button" onclick="location.href='/company/notificationsDeletePage?type=notification&bno=${notification.bno}'" class="btn btn-danger">게시글 삭제</button>
 								</div>
-							</div>
-						</form>
+							</form>
+						</div>
+						<div class="box box-info">
+							<form role="form" method="post" action="/company/writeCommentSubmit">
+								<div class="box-header with-border">
+									<h3 class="box-title">덧글 작성</h3>
+								</div>
+								<!-- /.box-header -->
+								<div class="box-body">
+									<div class="form-group">
+										<label>내용</label>
+										<input name="comment" type="text" class="form-control">
+									</div>
+								</div>
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<button type="submit" class="btn btn-success">덧글 작성</button>
+								</div>
+							</form>
+						</div>
 						<ul class="timeline">
 						    <!-- timeline time label -->
 						    <li class="time-label">
@@ -55,15 +73,15 @@
 						        </span>
 						    </li>
 						    <!-- /.timeline-label -->
-						
+							
 						    <!-- timeline item -->
 						    <li>
 						        <!-- timeline icon -->
-						        <i class="fa fa-envelope bg-blue"></i>
+						        <i class="fa fa-commenting-o bg-blue"></i>
 						        <div class="timeline-item">
 						            <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
 						
-						            <h3 class="timeline-header"><a target="_blank" href="/member/profiles?username=${notification.writer}">${notification.writer}</a> 님의 프로필</h3>
+						            <h3 class="timeline-header"><a target="_blank" title="클릭하시면 해당 프로필을 보실수 있습니다." href="/member/profiles?username=${notification.writer}">${notification.writer}</a> 님의 덧글</h3>
 						
 						            <div class="timeline-body">
 						                ...
