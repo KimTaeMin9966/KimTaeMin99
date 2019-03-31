@@ -2,7 +2,9 @@
 /.metadata/
 /.recommenders/
 /BoardSample_MVC/
+/BoardSample_MVC/target/
 /BoardSample_MVC/src/main/webapp/WEB-INF/properties/
+/XXCompany_MVC/target/
 /XXCompany_MVC/src/main/webapp/WEB-INF/properties/
 /Servers/
 
