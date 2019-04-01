@@ -1,8 +1,9 @@
 package net.koreate.controller;
 
-import java.util.zip.DataFormatException;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -10,7 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 @ControllerAdvice
-public class ExceptionAdvice {
+public class ExceptionAdviceController {
+
 	/**
 	 * 100 : 데이터의 일부를 서버가 받은 상태이다.
 	 * 
@@ -31,9 +33,12 @@ public class ExceptionAdvice {
 	 * 504 : 지정된 처리시간이 지나서 처리되지 못함.
 	 */
 	
-	@ExceptionHandler(DataFormatException.class)
+	private static final Logger logger = LoggerFactory.getLogger(ExceptionAdviceController.class);
+	
+	@ExceptionHandler(MissingServletRequestParameterException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	private ModelAndView Error400(Exception e) {
+		logger.info("ERROR 400");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", e);
 		mav.setViewName("error/400");
@@ -43,14 +48,17 @@ public class ExceptionAdvice {
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	private ModelAndView Error404(Exception e) {
+		logger.info("ERROR 404");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", e);
 		mav.setViewName("error/404");
 		return mav;
 	}
 
+	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	private ModelAndView Error500(Exception e) {
+		logger.info("ERROR 500");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", e);
 		mav.setViewName("error/500");
