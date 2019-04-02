@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import net.koreate.dao.CompanyDao;
 import net.koreate.vo.BoardVo;
+import net.koreate.vo.CommentsVo;
 import net.koreate.vo.Criteria;
 import net.koreate.vo.PageMaker;
 
@@ -68,6 +69,30 @@ public class CompanyServiceImpl implements CompanyService {
 	public void notificationsDeletePageGetMethod(int bno) { // Since - 2019/03/28, Content - 공지사항 내용 삭제
 		// TODO Auto-generated method stub
 		dao.notificationsDeletePageGetMethod(bno);
+	}
+
+	@Override
+	public void writeCommentSubmitPostMethod(CommentsVo vo) { // Since - 2019/04/02, Content - 덧글 작성 요청
+		// TODO Auto-generated method stub
+		dao.writeCommentSubmitPostMethod(vo);
+	}
+
+	@Override
+	public List<CommentsVo> commentsReadPageGetMethod(int bno) { // Since - 2019/04/02, Content - 해당 게시물 번호로 가져와 덧글 목록 가져오기
+		// TODO Auto-generated method stub
+		return dao.commentsReadPageGetMethod(bno);
+	}
+
+	@Override
+	public void writeCommentEditPostMethod(CommentsVo vo) { // Since - 2019/04/02, Content - 덧글 수정 요청
+		// TODO Auto-generated method stub
+		dao.writeCommentEditPostMethod(vo);
+	}
+
+	@Override
+	public CommentsVo CommentEditGetMethod(int cno) { // Since - 2019/04/02, Content - 덧글 수정창 요청
+		// TODO Auto-generated method stub
+		return dao.CommentEditGetMethod(cno);
 	}
 
 }

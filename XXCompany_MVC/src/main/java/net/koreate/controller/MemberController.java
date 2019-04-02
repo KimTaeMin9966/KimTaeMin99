@@ -84,8 +84,9 @@ public class MemberController {
 	@GetMapping(value = "/profiles") // Spring Framework V4.3
 	public void profilesGetMethod(@RequestParam(value = "username") String username,
 			Model model) { // Since - 2019/03/26, Content - 자기자신의 정보를 볼때 호출
-		logger.info("profilesGetMethod Called!!!");
-		model.addAttribute("member", service.profilesGetMethod(username));
+		logger.info("profilesGetMethod Called!!! {}", username);
+		MemberVo vo = service.profilesGetMethod(username);
+		model.addAttribute("member", vo);
 	}
 	
 	@GetMapping(value = "/logout") // Spring Framework V4.3

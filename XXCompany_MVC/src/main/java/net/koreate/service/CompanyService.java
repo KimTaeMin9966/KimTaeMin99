@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.koreate.vo.BoardVo;
+import net.koreate.vo.CommentsVo;
 import net.koreate.vo.Criteria;
 import net.koreate.vo.PageMaker;
 
@@ -24,5 +25,13 @@ public interface CompanyService {
 	void notificationsEditPagePostMethod(BoardVo vo); // Since - 2019/03/28, Content - 공지사항 내용 수정
 
 	void notificationsDeletePageGetMethod(int bno); // Since - 2019/03/28, Content - 공지사항 내용 삭제
+
+	void writeCommentSubmitPostMethod(CommentsVo vo); // Since - 2019/04/02, Content - 덧글 작성 요청
+
+	List<CommentsVo> commentsReadPageGetMethod(int bno); // Since - 2019/04/02, Content - 해당 게시물 번호로 가져와 덧글 목록 가져오기
+
+	void writeCommentEditPostMethod(CommentsVo vo); // Since - 2019/04/02, Content - 덧글 수정 요청
+
+	CommentsVo CommentEditGetMethod(int cno); // Since - 2019/04/02, Content - 덧글 수정창 요청
 
 }

@@ -33,4 +33,18 @@
 	<delete id="notificationsDeletePageGetMethod">
 		DELETE FROM CompanyBoard WHERE bno = #{bno}
 	</delete>
+	<insert id="writeCommentSubmitPostMethod">
+		INSERT INTO CompanyBoardComments(bno, comments, writer)
+		VALUES(#{bno}, #{comments}, #{writer})
+	</insert>
+	<select id="commentsReadPageGetMethod" resultType="cmvo">
+		SELECT * FROM CompanyBoardComments WHERE bno = #{bno}
+	</select>
+	<update id="writeCommentEditPostMethod">
+		UPDATE CompanyBoardComments SET comments = #{comments}, updatedate = NOW()
+		WHERE bno = #{bno} AND cno = #{cno}
+	</update>
+	<select id="CommentEditGetMethod" resultType="cmvo">
+		SELECT * FROM CompanyBoardComments WHERE cno = #{cno}
+	</select>
 </mapper>

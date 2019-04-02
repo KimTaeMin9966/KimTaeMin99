@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias alias="mbvo" type="net.koreate.vo.MemberVo" />
 		<typeAlias alias="bdvo" type="net.koreate.vo.BoardVo" />
+		<typeAlias alias="cmvo" type="net.koreate.vo.CommentsVo" />
 	</typeAliases>
 	
 	<mappers>

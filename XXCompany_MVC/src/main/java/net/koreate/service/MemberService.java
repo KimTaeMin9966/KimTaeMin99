@@ -9,6 +9,6 @@ public interface MemberService {
 
 	MemberVo Login(LoginDto dto); // Since - 2019/03/27, Content - 로그인을 할때 호출
 
-	Object profilesGetMethod(String username); // Since - 2019/03/27, Content - 자기자신의 정보를 볼때 호출
+	MemberVo profilesGetMethod(String username); // Since - 2019/03/27, Content - 자기자신의 정보를 볼때 호출
 
 }

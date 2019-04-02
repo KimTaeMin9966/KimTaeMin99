@@ -1,5 +1,7 @@
 package net.koreate.controller;
 
+import javax.el.ELException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -55,7 +57,7 @@ public class ExceptionAdviceController {
 		return mav;
 	}
 
-	@ExceptionHandler(Exception.class)
+	@ExceptionHandler({Exception.class, ELException.class})
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	private ModelAndView Error500(Exception e) {
 		logger.info("ERROR 500");

@@ -9,24 +9,24 @@
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/dist/img/favicon.ico">
+    <link rel="shortcut icon" href="/resources/dist/img/favicon.ico">
     
 	<!-- jQuery 3 -->
-	<script charset="utf-8" src="${pageContext.request.contextPath}/resources/bower_components/jquery/dist/jquery.min.js?version=1"></script>
+	<script charset="utf-8" src="/resources/bower_components/jquery/dist/jquery.min.js?version=2"></script>
 	<!-- Bootstrap 3.3.7 -->
-	<script charset="utf-8" src="${pageContext.request.contextPath}/resources/bower_components/bootstrap/dist/js/bootstrap.min.js?version=1"></script>
+	<script charset="utf-8" src="/resources/bower_components/bootstrap/dist/js/bootstrap.min.js?version=2"></script>
 	<!-- iCheck -->
-	<script charset="utf-8" src="${pageContext.request.contextPath}/resources/plugins/iCheck/icheck.min.js?version=1"></script>
+	<script charset="utf-8" src="/resources/plugins/iCheck/icheck.min.js?version=2"></script>
 	<!-- Bootstrap 3.3.7 -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bower_components/bootstrap/dist/css/bootstrap.min.css?version=1">
+	<link rel="stylesheet" href="/resources/bower_components/bootstrap/dist/css/bootstrap.min.css?version=2">
 	<!-- Font Awesome -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bower_components/font-awesome/css/font-awesome.min.css?version=1">
+	<link rel="stylesheet" href="/resources/bower_components/font-awesome/css/font-awesome.min.css?version=2">
 	<!-- Ionicons -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bower_components/Ionicons/css/ionicons.min.css?version=1">
+	<link rel="stylesheet" href="/resources/bower_components/Ionicons/css/ionicons.min.css?version=2">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dist/css/AdminLTE.min.css?version=1">
+	<link rel="stylesheet" href="/resources/dist/css/AdminLTE.min.css?version=2">
 	<!-- iCheck -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/iCheck/square/blue.css?version=1">
+	<link rel="stylesheet" href="/resources/plugins/iCheck/square/blue.css?version=2">
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

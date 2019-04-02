@@ -36,7 +36,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Object profilesGetMethod(String username) { // Since - 2019/03/27, Content - 자기자신의 정보를 볼때 호출
+	public MemberVo profilesGetMethod(String username) { // Since - 2019/03/27, Content - 자기자신의 정보를 볼때 호출
 		// TODO Auto-generated method stub
 		return dao.profilesGetMethod(username);
 	}

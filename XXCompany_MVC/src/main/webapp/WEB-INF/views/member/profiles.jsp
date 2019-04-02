@@ -21,7 +21,7 @@
 						<!-- Profile Image -->
 						<div class="box box-primary">
 							<div class="box-body box-profile">
-								<img class="profile-user-img img-responsive img-circle" src="${pageContext.request.contextPath}/resources/dist/img/user4-128x128.jpg" alt="User profile picture">
+								<img class="profile-user-img img-responsive img-circle" src="/resources/dist/img/user4-128x128.jpg" alt="User profile picture">
 								<h3 class="profile-username text-center">${member.username}</h3>
 								<p class="text-muted text-center"><fmt:formatDate value="${member.regdate}" pattern="yyyy-MM-dd HH:mm" /></p>
 								<ul class="list-group list-group-unbordered">
