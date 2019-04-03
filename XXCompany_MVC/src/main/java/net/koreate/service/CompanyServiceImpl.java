@@ -20,79 +20,88 @@ public class CompanyServiceImpl implements CompanyService {
 	CompanyDao dao;
 
 	@Override
-	public List<BoardVo> notificationsGetMethod(Map<String, Object> params) { // Since - 2019/03/28, Content - 공지사항 보기
+	public List<BoardVo> boardGetMethod(Map<String, Object> params) {
 		// TODO Auto-generated method stub
-		return dao.notificationsGetMethod(params);
+		String type = (String) params.get("type");
+		if (type == null) {
+			Criteria cri = (Criteria) params.get("cri");
+			List<BoardVo> list =  dao.boardGetMethod(cri);
+			for(BoardVo vo : list) vo.setCommentCnt(dao.getCommentCnt(vo.getBno()));
+			return list;
+		} else {
+			List<BoardVo> list =  dao.boardTypeGetMethod(params);
+			for(BoardVo vo : list) vo.setCommentCnt(dao.getCommentCnt(vo.getBno()));
+			return list;
+		}
 	}
-
+	
 	@Override
-	public void writeSubmitPostMethod(BoardVo bdvo) { // Since - 2018/03/28, Content - 게시글 작성 요청
-		// TODO Auto-generated method stub
-		dao.writeSubmitPostMethod(bdvo);
-	}
-
-	@Override
-	public PageMaker getPageMaker(Criteria cri) { // Since - 2019/03/28, Content - 페이지 정보 가져오기
+	public PageMaker getPageMaker(Criteria cri) {
 		// TODO Auto-generated method stub
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		int cnt = dao.notificationsCount(cri); // Since - 2019/03/28, Content - 공지글 갯수 가져오기
+		int cnt = dao.boardsCount(cri);
 		pageMaker.setTotalCount(cnt);
 		return pageMaker;
 	}
 
 	@Override
-	public void updateCnt(int bno) { // Since - 2019/03/28, Content - 해당 게시물 번호로 가져와 게시글 조회수 증가
+	public void updateCnt(int bno) {
 		// TODO Auto-generated method stub
 		dao.updateCnt(bno);
 	}
 
 	@Override
-	public BoardVo notificationsReadPageGetMethod(int bno) { // Since - 2019/03/28, Content - 해당 게시물 번호로 가져와 게시글 읽기2
+	public BoardVo boardReadPageGetMethod(int bno) {
 		// TODO Auto-generated method stub
-		return dao.notificationsReadPageGetMethod(bno);
+		return dao.boardReadPageGetMethod(bno);
 	}
 
 	@Override
-	public BoardVo notificationsEditPageGetMethod(int bno) { // Since - 2019/03/28, Content - 해당 게시물 번호로 가져와 게시글 수정
+	public List<CommentsVo> commentsReadGetMethod(int bno) {
 		// TODO Auto-generated method stub
-		return dao.notificationsEditPageGetMethod(bno);
+		return dao.commentsReadGetMethod(bno);
 	}
 
 	@Override
-	public void notificationsEditPagePostMethod(BoardVo vo) { // Since - 2019/03/28, Content - 공지사항 내용 수정
+	public BoardVo boardEditPageGetMethod(int bno) {
 		// TODO Auto-generated method stub
-		dao.notificationsEditPagePostMethod(vo);
+		return dao.boardEditPageGetMethod(bno);
 	}
 
 	@Override
-	public void notificationsDeletePageGetMethod(int bno) { // Since - 2019/03/28, Content - 공지사항 내용 삭제
+	public void boardEditPagePostMethod(BoardVo vo) {
 		// TODO Auto-generated method stub
-		dao.notificationsDeletePageGetMethod(bno);
+		dao.boardEditPagePostMethod(vo);
 	}
 
 	@Override
-	public void writeCommentSubmitPostMethod(CommentsVo vo) { // Since - 2019/04/02, Content - 덧글 작성 요청
+	public void boardDeletePageGetMethod(int bno) {
 		// TODO Auto-generated method stub
-		dao.writeCommentSubmitPostMethod(vo);
+		dao.boardDeletePageGetMethod(bno);
 	}
 
 	@Override
-	public List<CommentsVo> commentsReadPageGetMethod(int bno) { // Since - 2019/04/02, Content - 해당 게시물 번호로 가져와 덧글 목록 가져오기
+	public void writePostMethod(BoardVo vo) {
 		// TODO Auto-generated method stub
-		return dao.commentsReadPageGetMethod(bno);
+		dao.writePostMethod(vo);
 	}
 
 	@Override
-	public void writeCommentEditPostMethod(CommentsVo vo) { // Since - 2019/04/02, Content - 덧글 수정 요청
+	public void writeCommentPostMethod(CommentsVo vo) {
 		// TODO Auto-generated method stub
-		dao.writeCommentEditPostMethod(vo);
+		dao.writeCommentPostMethod(vo);
 	}
 
 	@Override
-	public CommentsVo CommentEditGetMethod(int cno) { // Since - 2019/04/02, Content - 덧글 수정창 요청
+	public CommentsVo CommentEditGetMethod(int cno) {
 		// TODO Auto-generated method stub
 		return dao.CommentEditGetMethod(cno);
 	}
 
+	@Override
+	public void CommentEditPostMethod(CommentsVo vo) {
+		// TODO Auto-generated method stub
+		dao.CommentEditPostMethod(vo);
+	}
 }

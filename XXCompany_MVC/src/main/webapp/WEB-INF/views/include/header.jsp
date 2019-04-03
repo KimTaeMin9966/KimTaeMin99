@@ -233,14 +233,14 @@
 									<div class="row">
 								<c:choose>
 									<c:when test="${member.username eq '김태민'}">
-										<div class="col-xs-4 text-center"><a href="/company/all">총 작업량</a></div>
+										<div class="col-xs-4 text-center"><a href="/company/board">총 작업량</a></div>
 										<div class="col-xs-4 text-center"><a href="/company/write">글 작성</a></div>
-										<div class="col-xs-4 text-center"><a href="/company/notifications?type=notification">공지사항</a></div>	
+										<div class="col-xs-4 text-center"><a href="/company/board?type=notification">공지사항</a></div>	
 									</c:when>
 									<c:otherwise>
-										<div class="col-xs-4 text-center"><a href="/company/all">총 작업량</a></div>
-										<div class="col-xs-4 text-center"><a href="/company/today">오늘 할 량</a></div>
-										<div class="col-xs-4 text-center"><a href="/company/notifications?type=notification">공지사항</a></div>
+										<div class="col-xs-4 text-center"><a href="/company/board">총 작업량</a></div>
+										<div class="col-xs-4 text-center"><a href="/company/board?type=today">오늘 할 량</a></div>
+										<div class="col-xs-4 text-center"><a href="/company/board?type=notification">공지사항</a></div>
 									</c:otherwise>
 								</c:choose>
 									</div><!-- /.row -->
@@ -341,9 +341,9 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="/company/all"><i class="fa fa-circle-o"></i> 전체 작업량 보러가기</a></li>
-							<li><a href="/company/today"><i class="fa fa-circle-o"></i> 오늘 할당량 보러가기</a></li>
-							<li><a href="/company/notifications?type=notification"><i class="fa fa-circle-o"></i> 공지사항 보러가기</a></li>
+							<li><a href="/company/board"><i class="fa fa-circle-o"></i> 전체 작업량 보러가기</a></li>
+							<li><a href="/company/board?type=today"><i class="fa fa-circle-o"></i> 오늘 할당량 보러가기</a></li>
+							<li><a href="/company/board?type=notification"><i class="fa fa-circle-o"></i> 공지사항 보러가기</a></li>
 						</ul>
 					</li>
 					<li class="treeview">

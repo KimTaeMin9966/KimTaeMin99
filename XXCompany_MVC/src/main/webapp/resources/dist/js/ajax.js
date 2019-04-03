@@ -3,9 +3,9 @@
  */
 function CommentSubmit(url, action) {
 	var datas = {
-		bno : $("#bno").val(),
-		writer : $("#writer").val(),
-		comments : $("#comments").val()
+		bno : $("#CommentBno").val(),
+		writer : $("#CommentWriter").val(),
+		comments : $("#CommentComments").val()
 	}
 	$.ajax({
 		type : action,
@@ -18,11 +18,9 @@ function CommentSubmit(url, action) {
 		data : JSON.stringify(datas),
 		success : function(result) {
 			window.location.reload();
-			self.close();
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
-			self.close();
 		}
 	});
 }
@@ -45,11 +43,9 @@ function CommentEdit(url, action) {
 		data : JSON.stringify(datas),
 		success : function(result) {
 			window.location.reload();
-			self.close();
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
-			self.close();
 		}
 	});
 }
@@ -68,15 +64,28 @@ function CommentGet(url, action, cno) {
 			$("#modelCno").val(result.cno);
 			$("#modelWriter").val(result.writer);
 			$("#modelComments").val(result.comments);
-			//self.close();
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
-			self.close();
 		}
 	});
 }
 
-function dateCalc(data) {
-	alert(data);
+function BoardDelete(url, action, type) {
+	$.ajax({
+		type : action,
+		url : url,
+		headers : {
+			"Content-Type" : "application/json",
+			"X-HTTP-Method-Override" : action
+		},
+		dataType : "text",
+		success : function(result) {
+			alert('성공');
+			window.location = '/company/board?type=' + type
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('덧글이 달린 게시물은 지울수 없습니다');
+		}
+	});
 }

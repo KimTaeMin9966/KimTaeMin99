@@ -12,7 +12,7 @@
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 					<li><a href="#">작업량</a></li>
 					<li><a href="#">공지사항</a></li>
-					<li class="active">${notification.bno}번 게시물</li>
+					<li class="active">${board.bno}번 게시물</li>
 				</ol>
 			</section>
 		
@@ -20,7 +20,7 @@
 			<section class="content">
 				<div class="row">
 					<div class="col-md-12">
-						<form role="form" method="post" action="/company/notificationsEditPage">
+						<form role="form" method="post" action="/company/boardEditPage">
 							<div class="box box-warning">
 								<div class="box-header with-border">
 									<h3 class="box-title">게시물 읽기</h3>
@@ -29,13 +29,13 @@
 								<div class="box-body">
 									<div class="form-group">
 										<label>제목</label>
-										<input name="title" type="text" class="form-control" value="${notification.title}" >
+										<input name="title" type="text" class="form-control" value="${board.title}" >
 									</div>
 									<div class="form-group">
 										<label>내용</label>
-										<textarea name="content" class="form-control" rows="3" >${notification.content}</textarea>
+										<textarea name="content" class="form-control" rows="3" >${board.content}</textarea>
 									</div>
-									<input type="hidden" name="bno" value="${notification.bno}">
+									<input type="hidden" name="bno" value="${board.bno}">
 								</div>
 								<!-- /.box-body -->
 								<div class="box-footer">

@@ -19,7 +19,7 @@
 			<section class="content">
 				<div class="row">
 					<div class="col-md-12">
-						<form role="form" method="post" action="/company/writeSubmit">
+						<form role="form" method="post" action="/company/write">
 							<div class="box box-warning">
 								<div class="box-header with-border">
 									<h3 class="box-title">게시물 작성</h3>
@@ -29,10 +29,11 @@
 										<div class="form-group">
 											<label>타입</label>
 											<select name="types" class="form-control">
-												<option>---</option>
-												<option value="notification">공지</option>
-												<option value="">잡담</option>
-												<option value="">오늘 할일</option>
+												<optgroup label="---">
+													<option value="notification">공지</option>
+													<option value="today">오늘 할일</option>
+													<option value="">잡담</option>
+												</optgroup>
 											</select>
 										</div>
 										<div class="form-group">
