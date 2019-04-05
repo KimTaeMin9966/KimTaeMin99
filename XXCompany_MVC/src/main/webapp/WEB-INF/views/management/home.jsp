@@ -46,7 +46,7 @@
 									<c:forEach var="member" items="${members}">
 										<tr>
 											<td>
-												<form role="form" id="authority">
+												<form role="form" id="authority_${member.userno}">
 													<input type="hidden" id="userno" value="${member.userno}">
 													<select class="form-control">
 														<option <c:out value="${member.auth == '사장' ? 'selected' : ''}"/> value="사장">사장님</option>
@@ -65,7 +65,7 @@
 												</div>
 											</td>
 											<td>
-												<button onclick="authoritySave('/management/authoritySave', 'post')" class="btn btn-primary">권한저장</button>
+												<button onclick="authoritySave('/management/authoritySave', 'post', '${member.userno}')" class="btn btn-primary">권한저장</button>
 												<button onclick="infoShow('/management/info?userID=${member.userno}', 'post')"  class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
 													정보보기
 												</button>

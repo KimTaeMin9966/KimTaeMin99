@@ -89,12 +89,13 @@ public class CompanyContoller {
 	
 	@GetMapping(value = "/boardReadPage") // Spring Framework V4.3
 	public void boardReadPageGetMethod(@RequestParam(value = "bno") int bno, @ModelAttribute("cri") Criteria cri,
-			Model model) {
+			HttpSession session, Model model) {
 		logger.info("boardReadPageGetMethod Called!!!");
 		BoardVo board = service.boardReadPageGetMethod(bno);
 		List<CommentsVo> comments = service.commentsReadGetMethod(bno);
 		model.addAttribute("board", board);
 		model.addAttribute("comments", comments);
+		model.addAttribute("member", session.getAttribute("member"));
 	}
 	
 	@GetMapping(value = "/boardEditPage") // Spring Framework V4.3

@@ -55,7 +55,7 @@
 								<div class="box-body">
 									<div class="form-group">
 										<label>작성자</label>
-										<input type="text" id="CommentWriter" class="form-control">
+										<input type="text" id="CommentWriter" readonly value="${member.username}" class="form-control">
 									</div>
 									<div class="form-group">
 										<label>내용</label>

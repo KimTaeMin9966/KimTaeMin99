@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.WebUtils;
@@ -60,12 +59,13 @@ public class MemberController {
 	}
 	
 	@PostMapping(value = "/registerCheck") // Spring Framework V4.3
-	public ResponseEntity<String> registerCheckPostMethod(@RequestBody String username) { // Since - 0000/00/00, Content - 콘탠츠
+	public ResponseEntity<String> registerCheckPostMethod(@RequestParam("username") String username) { // Since - 0000/00/00, Content - 콘탠츠
 		logger.info("registerCheckPostMethod Called!!!");
 		ResponseEntity<String> entity = null;
 		try {
-			service.registerCheckPostMethod(username);
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+			MemberVo vo = service.registerCheckPostMethod(username);
+			if (vo != null) entity = new ResponseEntity<String>("FAIL", HttpStatus.OK);
+			else			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		}
 		catch (Exception e) {
 			entity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -103,7 +103,7 @@ public class MemberController {
 			Model model) { // Since - 2019/03/26, Content - 자기자신의 정보를 볼때 호출
 		logger.info("profilesGetMethod Called!!! {}", username);
 		MemberVo vo = service.profilesGetMethod(username);
-		model.addAttribute("member", vo);
+		model.addAttribute("profile", vo);
 	}
 	
 	@GetMapping(value = "/logout") // Spring Framework V4.3

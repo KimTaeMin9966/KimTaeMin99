@@ -2,10 +2,10 @@
  * 
  */
 
-function authoritySave(url, action) {
+function authoritySave(url, action, userno) {
 	var target = {
-			auth: $('#authority > select').val(),
-			userno: $('#userno').val()
+			auth: $('#authority_' + userno + ' > select').val(),
+			userno: userno
 	}
 
 	$.ajax({

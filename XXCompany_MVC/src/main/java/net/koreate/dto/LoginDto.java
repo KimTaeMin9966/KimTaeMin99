@@ -2,6 +2,7 @@ package net.koreate.dto;
 
 public class LoginDto {
 	private String joindate;
+	private String username;
 	private String password;
 	private boolean useCookie;
 
@@ -11,6 +12,14 @@ public class LoginDto {
 
 	public void setJoindate(String joindate) {
 		this.joindate = joindate;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -31,7 +40,8 @@ public class LoginDto {
 
 	@Override
 	public String toString() {
-		return "LoginDto [joindate=" + joindate + ", password=" + password + ", useCookie=" + useCookie + "]";
+		return "LoginDto [joindate=" + joindate + ", username=" + username + ", password=" + password + ", useCookie="
+				+ useCookie + "]";
 	}
 
 }

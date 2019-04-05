@@ -5,13 +5,14 @@
 
 <mapper namespace="net.koreate.dao.MemberDao">
 	<select id="regBefor" resultType="mbvo">
-		SELECT * FROM XXCompany_Member WHERE username = #{username}
+		SELECT * FROM XXCompany_Member WHERE username = #{username} AND isOut = 0
 	</select>
 	<select id="registerCheckPostMethod" resultType="mbvo">
 		SELECT * FROM XXCompany_Member WHERE username = #{username}
 	</select>
-	<select id="getPasswordHashByJoindate" resultType="String">
-		SELECT password FROM XXCompany_Member WHERE joindate = #{joindate}
+	<select id="getPasswordHashByDto" resultType="String">
+		SELECT password FROM XXCompany_Member
+		WHERE joindate = #{joindate} AND username = #{username} AND isOut = 0
 	</select>
 	<insert id="registerPostMethod">
 		INSERT INTO XXCompany_Member(username, joindate, password)
@@ -23,14 +24,14 @@
 	</update>
 	<select id="Login" resultType="mbvo">
 		SELECT * FROM XXCompany_Member
-		WHERE joindate = #{joindate} AND password = #{password} AND isOut = 0
+		WHERE username = #{username} AND joindate = #{joindate} AND password = #{password} AND isOut = 0
 	</select>
 	<select id="profilesGetMethod" resultType="mbvo">
-		SELECT * FROM XXCompany_Member WHERE username = #{username}
+		SELECT * FROM XXCompany_Member WHERE username = #{username} AND isOut = 0
 	</select>
 	<update id="authoritySavePostMethod">
 		UPDATE XXCompany_Member SET auth = #{auth}
-		WHERE userno = #{userno}
+		WHERE userno = #{userno} AND isOut = 0
 	</update>
 	<select id="membersGetMethod" resultType="mbvo">
 		SELECT * FROM XXCompany_Member WHERE isOut = 0

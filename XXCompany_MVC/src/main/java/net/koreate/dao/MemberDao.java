@@ -25,8 +25,8 @@ public interface MemberDao {
 
 	void registerUpdatePostMethod(MemberVo vo);
 
-	void registerCheckPostMethod(String username);
+	MemberVo registerCheckPostMethod(String username);
 
-	String getPasswordHashByJoindate(String joindate);
+	String getPasswordHashByDto(LoginDto dto);
 
 }

@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
 		String joindate = vo.getJoindate();
 		String password = vo.getPassword1();
 
-		final String hash = joindate + "/" + password;
+		final String hash = joindate + "/" + username + "/" + password;
 		
 		final String passwordHash = BCrypt.hashpw(hash, BCrypt.gensalt(15));
 		vo.setPassword(passwordHash);
@@ -77,15 +77,15 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void registerCheckPostMethod(String username) {
+	public MemberVo registerCheckPostMethod(String username) {
 		// TODO Auto-generated method stub
-		dao.registerCheckPostMethod(username);
+		return dao.registerCheckPostMethod(username);
 	}
 
 	@Override
-	public String getPasswordHashByJoindate(String joindate) {
+	public String getPasswordHashByDto(LoginDto dto) {
 		// TODO Auto-generated method stub
-		return dao.getPasswordHashByJoindate(joindate);
+		return dao.getPasswordHashByDto(dto);
 	}
 
 }

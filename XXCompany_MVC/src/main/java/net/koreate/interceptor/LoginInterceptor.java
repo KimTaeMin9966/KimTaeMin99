@@ -36,13 +36,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		ModelMap obj = modelAndView.getModelMap();
 		LoginDto dto = (LoginDto)obj.get("loginDto");
-		
+
 		String joindate = dto.getJoindate();
+		String username = dto.getUsername();
 		String password = dto.getPassword();
 
-		final String hash = joindate + "/" + password;
+		final String hash = joindate + "/" + username + "/" + password;
 		
-		final String passwordHash =  service.getPasswordHashByJoindate(joindate);
+		final String passwordHash =  service.getPasswordHashByDto(dto);
 		dto.setPassword(passwordHash);
 		
 		MemberVo vo = service.Login(dto);

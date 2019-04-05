@@ -22,8 +22,8 @@
 						<div class="box box-primary">
 							<div class="box-body box-profile">
 								<img class="profile-user-img img-responsive img-circle" src="/resources/dist/img/user4-128x128.jpg" alt="User profile picture">
-								<h3 class="profile-username text-center">[${member.auth}] ${member.username}</h3>
-								<p class="text-muted text-center"><fmt:formatDate value="${member.regdate}" pattern="yyyy-MM-dd HH:mm" /></p>
+								<h3 class="profile-username text-center">[${profile.auth}] ${profile.username}</h3>
+								<p class="text-muted text-center"><fmt:formatDate value="${profile.regdate}" pattern="yyyy-MM-dd HH:mm" /></p>
 								<ul class="list-group list-group-unbordered">
 									<li class="list-group-item"><b>내가 작성한 게시글 수</b><a class="pull-right">1,322</a></li>
 									<li class="list-group-item"><b>내가 작성한 덧글 수</b><a class="pull-right">543</a></li>
