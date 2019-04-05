@@ -3,7 +3,9 @@ package net.koreate.vo;
 import java.util.Date;
 
 public class MemberVo {
+	private int userno;
 	private String username;
+	private String auth;
 	private String joindate;
 	private String password;
 	private String password1;
@@ -12,12 +14,28 @@ public class MemberVo {
 	private Date regdate;
 	private Date editdate;
 
+	public int getUserno() {
+		return userno;
+	}
+
+	public void setUserno(int userno) {
+		this.userno = userno;
+	}
+
 	public String getUsername() {
 		return username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getAuth() {
+		return auth;
+	}
+
+	public void setAuth(String auth) {
+		this.auth = auth;
 	}
 
 	public String getJoindate() {
@@ -78,9 +96,9 @@ public class MemberVo {
 
 	@Override
 	public String toString() {
-		return "MemberVo [username=" + username + ", joindate=" + joindate + ", password=" + password + ", password1="
-				+ password1 + ", password2=" + password2 + ", isOut=" + isOut + ", regdate=" + regdate + ", editdate="
-				+ editdate + "]";
+		return "MemberVo [userno=" + userno + ", username=" + username + ", auth=" + auth + ", joindate=" + joindate
+				+ ", password=" + password + ", password1=" + password1 + ", password2=" + password2 + ", isOut="
+				+ isOut + ", regdate=" + regdate + ", editdate=" + editdate + "]";
 	}
 
 }

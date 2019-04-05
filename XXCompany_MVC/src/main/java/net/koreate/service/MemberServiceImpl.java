@@ -1,7 +1,10 @@
 package net.koreate.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import net.koreate.dao.MemberDao;
@@ -17,15 +20,23 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean registerPostMethod(MemberVo vo) { // Since - 2019/03/27, Content - 회원가입을 할때 호출
 		// TODO Auto-generated method stub
-		String password1 = vo.getPassword1();
-		String password2 = vo.getPassword2();
+		String username = vo.getUsername();
+		MemberVo regBefor = dao.regBefor(username);
 		
-		if (password1.equals(password2)) {
-			vo.setPassword(password1);
+		String joindate = vo.getJoindate();
+		String password = vo.getPassword1();
+
+		final String hash = joindate + "/" + password;
+		
+		final String passwordHash = BCrypt.hashpw(hash, BCrypt.gensalt(15));
+		vo.setPassword(passwordHash);
+		
+		if (regBefor == null) {
 			dao.registerPostMethod(vo);
 			return true;
 		} else {
-			return false;
+			dao.registerUpdatePostMethod(vo);
+			return true;
 		}
 	}
 
@@ -39,6 +50,42 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVo profilesGetMethod(String username) { // Since - 2019/03/27, Content - 자기자신의 정보를 볼때 호출
 		// TODO Auto-generated method stub
 		return dao.profilesGetMethod(username);
+	}
+
+	@Override
+	public void authoritySavePostMethod(MemberVo vo) {
+		// TODO Auto-generated method stub
+		dao.authoritySavePostMethod(vo);
+	}
+
+	@Override
+	public List<MemberVo> membersGetMethod() {
+		// TODO Auto-generated method stub
+		return dao.membersGetMethod();
+	}
+
+	@Override
+	public MemberVo infoPostMethod(int userno) {
+		// TODO Auto-generated method stub
+		return dao.infoPostMethod(userno);
+	}
+
+	@Override
+	public void deletePostMethod(int userno) {
+		// TODO Auto-generated method stub
+		dao.deletePostMethod(userno);
+	}
+
+	@Override
+	public void registerCheckPostMethod(String username) {
+		// TODO Auto-generated method stub
+		dao.registerCheckPostMethod(username);
+	}
+
+	@Override
+	public String getPasswordHashByJoindate(String joindate) {
+		// TODO Auto-generated method stub
+		return dao.getPasswordHashByJoindate(joindate);
 	}
 
 }

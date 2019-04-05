@@ -22,14 +22,14 @@
 						<div class="box box-primary">
 							<div class="box-body box-profile">
 								<img class="profile-user-img img-responsive img-circle" src="/resources/dist/img/user4-128x128.jpg" alt="User profile picture">
-								<h3 class="profile-username text-center">${member.username}</h3>
+								<h3 class="profile-username text-center">[${member.auth}] ${member.username}</h3>
 								<p class="text-muted text-center"><fmt:formatDate value="${member.regdate}" pattern="yyyy-MM-dd HH:mm" /></p>
 								<ul class="list-group list-group-unbordered">
-									<li class="list-group-item"><b>Followers</b><a class="pull-right">1,322</a></li>
-									<li class="list-group-item"><b>Following</b><a class="pull-right">543</a></li>
-									<li class="list-group-item"><b>Friends</b><a class="pull-right">13,287</a></li>
+									<li class="list-group-item"><b>내가 작성한 게시글 수</b><a class="pull-right">1,322</a></li>
+									<li class="list-group-item"><b>내가 작성한 덧글 수</b><a class="pull-right">543</a></li>
+									<li class="list-group-item"><b>내가 작업한 총량</b><a class="pull-right">13,287</a></li>
 								</ul>
-								<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+								<a href="#" class="btn btn-primary btn-block"><b>메일 발송</b></a>
 							</div>
 							<!-- /.box-body -->
 						</div>
