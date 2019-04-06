@@ -25,4 +25,6 @@ public interface MemberService {
 
 	String getPasswordHashByDto(LoginDto dto);
 
+	MemberVo sessionUpdateMethod(MemberVo loginUser);
+
 }

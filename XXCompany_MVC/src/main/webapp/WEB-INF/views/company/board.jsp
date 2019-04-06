@@ -64,7 +64,7 @@
 							</div>
 							<!-- /.box-body -->
 							<div class="box-footer clearfix">
-							<c:if test="${member.username eq '김태민'}">
+							<c:if test="${!empty member}">
 								<button type="button" onclick="location.href='/company/write'" class="btn btn-default">게시글 작성</button>
 							</c:if>
 								<ul class="pagination pagination-sm no-margin pull-right">

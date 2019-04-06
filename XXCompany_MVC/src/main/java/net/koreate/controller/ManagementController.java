@@ -3,6 +3,7 @@ package net.koreate.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,10 +52,15 @@ public class ManagementController {
 	*/
 	
 	@GetMapping(value = "/home") // Spring Framework V4.3
-	public void HomeGetMethod(Model model) {
+	public void HomeGetMethod(HttpSession session, Model model) {
 		logger.info("HomeGetMethod Called!!!");
+		MemberVo LoginUser = (MemberVo) session.getAttribute("member");
+		
 		List<MemberVo> members = service.membersGetMethod();
 		model.addAttribute("members", members);
+		
+		MemberVo sessionUpdate = service.sessionUpdateMethod(LoginUser);
+		session.setAttribute("member", sessionUpdate);
 	}
 	
 	@PostMapping(value = "/authoritySave") // Spring Framework V4.3

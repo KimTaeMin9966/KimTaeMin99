@@ -33,6 +33,9 @@
 		UPDATE XXCompany_Member SET auth = #{auth}
 		WHERE userno = #{userno} AND isOut = 0
 	</update>
+	<select id="sessionUpdateMethod" resultType="mbvo">
+		SELECT * FROM XXCompany_Member WHERE userno = #{userno} AND isOut = 0
+	</select>
 	<select id="membersGetMethod" resultType="mbvo">
 		SELECT * FROM XXCompany_Member WHERE isOut = 0
 	</select>

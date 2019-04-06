@@ -41,8 +41,10 @@
 							<!-- /.box-body -->
 							<div class="box-footer">
 								<button type="button" onclick="location.href='/company/board?type=${type}'" class="btn btn-default">목록으로 가기</button>
+							<c:if test="${board.writer eq member.username}">
 								<button type="button" onclick="location.href='/company/boardEditPage?type=${type}&bno=${board.bno}'" class="btn btn-warning">게시글 수정</button>
 								<button type="button" onclick="BoardDelete('/company/boardDeletePage?&bno=${board.bno}', 'post', '${type}')" class="btn btn-danger">게시글 삭제</button>
+							</c:if>
 							</div>
 						</div>
 						<div class="box box-info">

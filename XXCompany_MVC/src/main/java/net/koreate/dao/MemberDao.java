@@ -29,4 +29,6 @@ public interface MemberDao {
 
 	String getPasswordHashByDto(LoginDto dto);
 
+	MemberVo sessionUpdateMethod(MemberVo loginUser);
+
 }

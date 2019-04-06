@@ -88,4 +88,10 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getPasswordHashByDto(dto);
 	}
 
+	@Override
+	public MemberVo sessionUpdateMethod(MemberVo loginUser) {
+		// TODO Auto-generated method stub
+		return dao.sessionUpdateMethod(loginUser);
+	}
+
 }

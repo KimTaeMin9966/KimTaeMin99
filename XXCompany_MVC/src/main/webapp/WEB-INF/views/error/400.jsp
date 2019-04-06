@@ -19,7 +19,6 @@
 					<h2 class="headline text-red">400</h2>
 					<div class="error-content">
 						<h3><i class="fa fa-warning text-red"></i> Oh, no! There's no request for an address.</h3>
-						<p>Error content : ${exception.getMessage()}</p>
 						<p>
 							We will work on fixing that right away. Meanwhile, you may
 							<a href="javascript:history.go(-1);">return to dashboard</a> or try using the search form.
