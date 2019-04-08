@@ -2,10 +2,11 @@ package net.koreate.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -37,8 +38,10 @@ public class HomeController {
 	*/
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET) // Spring Framework V2.5
-	public String home(Locale locale, Model model) { // Since - 2019/03/26, Content - 메인홈페이지 화면 호출
+	public String home(Locale locale, HttpSession session) { // Since - 2019/03/26, Content - 메인홈페이지 화면 호출
 		logger.info("Welcome home! The client locale is {}.", locale);
+		session.setAttribute("language", locale);
+		session.setAttribute("homePage_title", "(주)태성전자");
 		return "home";
 	}
 	

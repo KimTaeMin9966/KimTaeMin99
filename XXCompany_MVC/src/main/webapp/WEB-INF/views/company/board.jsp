@@ -6,7 +6,7 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					(주)태성전자 <small>게시판입니다.</small>
+					${homePage_title} <small>게시판입니다.</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

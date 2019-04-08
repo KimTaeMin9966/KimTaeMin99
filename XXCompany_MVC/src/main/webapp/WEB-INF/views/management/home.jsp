@@ -6,11 +6,11 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					(주)태성전자 <small>관리홈페이지에 오시걸 환영합니다.</small>
+					${homePage_title} <small>관리홈페이지에 오시걸 환영합니다.</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li class="active">(주)태성전자 관리 페이지</li>
+					<li class="active">${homePage_title} 관리 페이지</li>
 				</ol>
 			</section>
 		

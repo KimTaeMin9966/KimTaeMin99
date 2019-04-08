@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>(주)태성전자</title>
+	<title>${homePage_title}</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	
@@ -59,8 +59,8 @@
 		<header class="main-header">
 			<!-- Logo -->
 			<a href="/" class="logo"><!-- mini logo for sidebar mini 50x50 pixels -->
-				<span class="logo-mini"><b>태</b>성전자</span><!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>(주)태</b>성전자<span>
+				<span class="logo-mini">${homePage_title}</span><!-- logo for regular state and mobile devices -->
+				<span class="logo-lg">${homePage_title}<span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top">
