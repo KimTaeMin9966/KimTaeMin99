@@ -1,11 +1,11 @@
 package net.koreate.controller;
 
-import javax.el.ELException;
 import javax.el.PropertyNotFoundException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -57,8 +57,18 @@ public class ExceptionAdviceController {
 		mav.setViewName("error/404");
 		return mav;
 	}
+	
+	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+	@ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+	private ModelAndView Error405(Exception e) {
+		logger.info("ERROR 404");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("exception", e);
+		mav.setViewName("error/405");
+		return mav;
+	}
 
-	@ExceptionHandler({Exception.class, ELException.class, PropertyNotFoundException.class})
+	@ExceptionHandler({Exception.class, PropertyNotFoundException.class})
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	private ModelAndView Error500(Exception e) {
 		logger.info("ERROR 500");
