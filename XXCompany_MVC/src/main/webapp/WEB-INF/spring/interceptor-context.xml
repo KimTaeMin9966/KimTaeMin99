@@ -8,7 +8,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<beans:bean id="authInterceptor" class="net.koreate.interceptor.AuthInterceptor" />
-	<beans:bean id="registerInterceptor" class="net.koreate.interceptor.RegisterInterceptor" />
 	<beans:bean id="loginInterceptor" class="net.koreate.interceptor.LoginInterceptor" />
 	<beans:bean id="checkCookieInterceptor" class="net.koreate.interceptor.CheckCookieInterceptor" />
 	
@@ -21,11 +20,6 @@
 			<exclude-mapping path="/member/loginPost" />
 			<exclude-mapping path="/member/logOut" />
 			<beans:ref bean="checkCookieInterceptor" />
-		</interceptor>
-		
-		<interceptor>
-			<mapping path="/member/registerPost" />
-			<beans:ref bean="registerInterceptor"/>
 		</interceptor>
 		
 		<interceptor>

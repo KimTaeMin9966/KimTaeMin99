@@ -94,4 +94,10 @@ public class MemberServiceImpl implements MemberService {
 		return dao.sessionUpdateMethod(loginUser);
 	}
 
+	@Override
+	public String getUserAuthByUsername(String username) {
+		// TODO Auto-generated method stub
+		return dao.getUserAuthByUsername(username);
+	}
+
 }

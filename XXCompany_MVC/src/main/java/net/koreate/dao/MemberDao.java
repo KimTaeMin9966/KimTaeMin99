@@ -31,4 +31,6 @@ public interface MemberDao {
 
 	MemberVo sessionUpdateMethod(MemberVo loginUser);
 
+	String getUserAuthByUsername(String username);
+
 }

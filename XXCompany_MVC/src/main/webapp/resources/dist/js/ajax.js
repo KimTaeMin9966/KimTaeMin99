@@ -72,20 +72,39 @@ function CommentGet(url, action, cno) {
 }
 
 function BoardDelete(url, action, type) {
-	$.ajax({
-		type : action,
-		url : url,
-		headers : {
-			"Content-Type" : "application/json",
-			"X-HTTP-Method-Override" : action
-		},
-		dataType : "text",
-		success : function(result) {
-			alert('성공');
-			window.location = '/company/board?type=' + type
-		},
-		error : function(jqXHR, textStatus, errorThrown) {
-			alert('덧글이 달린 게시물은 지울수 없습니다');
-		}
-	});
+	if (type != null) {
+		$.ajax({
+			type : action,
+			url : url,
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : action
+			},
+			dataType : "text",
+			success : function(result) {
+				alert('성공');
+				window.location = '/company/board?type=' + type
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert('덧글이 달린 게시물은 지울수 없습니다');
+			}
+		});
+	} else {
+		$.ajax({
+			type : action,
+			url : url,
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : action
+			},
+			dataType : "text",
+			success : function(result) {
+				alert('성공');
+				window.location = '/company/board'
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert('덧글이 달린 게시물은 지울수 없습니다');
+			}
+		});
+	}
 }

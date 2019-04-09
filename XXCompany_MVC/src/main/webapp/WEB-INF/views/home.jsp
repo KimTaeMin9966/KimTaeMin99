@@ -17,6 +17,13 @@
 			<!-- ChartJS -->
 			<script charset="utf-8" src="/resources/bower_components/chart.js/Chart.js?version=2"></script>
 			
+			<script type="text/javascript">
+				var message = '${error}';
+				if (message != null && message != '') {
+					alert(message);
+				}
+			</script>
+			
 			<!-- Main content -->
 			<section class="content">
 				<!-- Info boxes -->

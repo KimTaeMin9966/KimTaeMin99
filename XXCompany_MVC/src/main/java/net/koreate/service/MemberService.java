@@ -27,4 +27,6 @@ public interface MemberService {
 
 	MemberVo sessionUpdateMethod(MemberVo loginUser);
 
+	String getUserAuthByUsername(String username);
+
 }

@@ -46,4 +46,7 @@
 		UPDATE XXCompany_Member SET isOut = 1
 		WHERE userno = #{userno}
 	</update>
+	<select id="getUserAuthByUsername" resultType="String">
+		SELECT auth FROM XXCompany_Member WHERE username = #{username} AND isOut = 0
+	</select>
 </mapper>
