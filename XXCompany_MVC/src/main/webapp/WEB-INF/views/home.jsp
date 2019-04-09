@@ -21,6 +21,7 @@
 				var message = '${error}';
 				if (message != null && message != '') {
 					alert(message);
+					
 				}
 			</script>
 			
