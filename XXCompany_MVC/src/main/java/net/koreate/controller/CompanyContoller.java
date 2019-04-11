@@ -83,7 +83,6 @@ public class CompanyContoller {
 		
 		rttr.addAttribute("bno", bno);
 		rttr.addAttribute("page", cri.getPage());
-		rttr.addAttribute("type", "notification");
 		return "redirect:/company/boardReadPage";
 	}
 	
@@ -95,6 +94,7 @@ public class CompanyContoller {
 		List<CommentsVo> comments = service.commentsReadGetMethod(bno);
 		model.addAttribute("board", board);
 		model.addAttribute("comments", comments);
+		model.addAttribute("type", board.getTypes());
 		model.addAttribute("member", session.getAttribute("member"));
 	}
 	
@@ -114,7 +114,7 @@ public class CompanyContoller {
 		
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
-		rttr.addAttribute("type", session.getAttribute("type"));
+		rttr.addAttribute("type", vo.getTypes());
 		return "redirect:/company/board";
 	}
 	

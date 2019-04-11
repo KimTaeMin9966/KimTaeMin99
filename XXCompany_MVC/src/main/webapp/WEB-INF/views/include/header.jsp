@@ -15,6 +15,8 @@
     
 	<!-- jQuery 3 -->
 	<script charset="utf-8" src="/resources/bower_components/jquery/dist/jquery.min.js?version=2"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script src="/resources/bower_components/jquery-ui/jquery-ui.min.js"></script>
 	<!-- Bootstrap 3.3.7 -->
 	<script charset="utf-8" src="/resources/bower_components/bootstrap/dist/js/bootstrap.min.js?version=2"></script>
 	<!-- FastClick -->
@@ -233,14 +235,14 @@
 									<div class="row">
 								<c:choose>
 									<c:when test="${member.username eq '김태민'}">
-										<div class="col-xs-4 text-center"><a href="/company/board">총 작업량</a></div>
+										<div class="col-xs-4 text-center"><a href="/company/board">전체글</a></div>
 										<div class="col-xs-4 text-center"><a href="/company/write">글 작성</a></div>
-										<div class="col-xs-4 text-center"><a href="/company/board?type=notification">공지사항</a></div>	
+										<div class="col-xs-4 text-center"><a href="/company/board?type=notification">공지글</a></div>	
 									</c:when>
 									<c:otherwise>
-										<div class="col-xs-4 text-center"><a href="/company/board">총 작업량</a></div>
-										<div class="col-xs-4 text-center"><a href="/company/board?type=today">오늘 할 량</a></div>
-										<div class="col-xs-4 text-center"><a href="/company/board?type=notification">공지사항</a></div>
+										<div class="col-xs-4 text-center"><a href="/company/board">전체글</a></div>
+										<div class="col-xs-4 text-center"><a href="/company/board?type=today">오늘글</a></div>
+										<div class="col-xs-4 text-center"><a href="/company/board?type=notification">공지글</a></div>
 									</c:otherwise>
 								</c:choose>
 									</div><!-- /.row -->
@@ -332,47 +334,46 @@
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="header">MAIN NAVIGATION</li>
-					<li class="active treeview menu-open">
-						<a>
-							<i class="fa fa-laptop"></i>
-							<span>작업량</span>
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
+					<li class="active">
+						<a href="/">
+							<i class="fa fa-home"></i>
+							<span>HOME</span>
 						</a>
-						<ul class="treeview-menu">
-							<li><a href="/company/board"><i class="fa fa-circle-o"></i> 전체 작업량 보러가기</a></li>
-							<li><a href="/company/board?type=today"><i class="fa fa-circle-o"></i> 오늘 할당량 보러가기</a></li>
-							<li><a href="/company/board?type=notification"><i class="fa fa-circle-o"></i> 공지사항 보러가기</a></li>
-						</ul>
 					</li>
 				<c:if test="${member.auth eq '사장님' or member.auth eq '웹관리자' or member.auth eq '관계자'}">
 					<li>
-						<a href="/management/home">
+						<a href="/management/member">
 							<i class="fa fa-users"></i>
 							<span>회원 관리</span>
 						</a>
 					</li>
 				</c:if>
-					<li>
-						<a href="pages/widgets.html"><i class="fa fa-th"></i>
-							<span>Widgets</span>
-								<span class="pull-right-container"><small class="label pull-right bg-green">new</small>
-							</span>
-						</a>
-					</li>
 					<li class="treeview">
-						<a href="#">
+						<a>
 							<i class="fa fa-pie-chart"></i>
-							<span>Charts</span>
+							<span>작업 관리</span>
 							<span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-							<li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-							<li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-							<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+							<li><a href="/working/order"><i class="fa fa-circle-o"></i> 작업 일지</a></li>
+							<li><a href="/working/order"><i class="fa fa-circle-o"></i> 작업 지시서</a></li>
+							<li><a href="/working/order"><i class="fa fa-circle-o"></i> 작업 지시서</a></li>
+							<li><a href="/working/order"><i class="fa fa-circle-o"></i> 작업 지시서</a></li>
+						</ul>
+					</li>
+					<li class="treeview">
+						<a>
+							<i class="fa fa-list"></i>
+							<span>커뮤니티</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="/company/board"><i class="fa fa-circle-o"></i> 전체글 보러가기</a></li>
+							<li><a href="/company/board?type=today"><i class="fa fa-circle-o"></i> 오늘글 보러가기</a></li>
+							<li><a href="/company/board?type=notification"><i class="fa fa-circle-o"></i> 공지글 보러가기</a></li>
 						</ul>
 					</li>
 					<li class="treeview">

@@ -21,7 +21,17 @@
 					<div class="col-xs-12">
 						<div class="box">
 							<div class="box-header">
-								<h3 class="box-title">게시판</h3>
+								<h3 class="box-title">
+									게시판
+							<c:choose>
+								<c:when test="${type eq 'notification'}">
+									<button type="button" onclick="location.href='/company/board'" class="btn btn-default">전체글 보기</button>
+								</c:when>
+								<c:when test="${type eq 'today'}">
+									<button type="button" onclick="location.href='/company/board'" class="btn btn-default">전체글 보기</button>
+								</c:when>
+							</c:choose>
+								</h3>
 								<div class="box-tools">
 									<div class="input-group input-group-sm" style="width: 150px;">
 										<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">

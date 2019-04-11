@@ -51,7 +51,7 @@ public class ManagementController {
 	}
 	*/
 	
-	@GetMapping(value = "/home") // Spring Framework V4.3
+	@GetMapping(value = "/member") // Spring Framework V4.3
 	public void HomeGetMethod(HttpSession session, Model model) {
 		logger.info("HomeGetMethod Called!!!");
 		MemberVo LoginUser = (MemberVo) session.getAttribute("member");

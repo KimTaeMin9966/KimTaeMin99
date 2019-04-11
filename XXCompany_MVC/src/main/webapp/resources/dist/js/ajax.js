@@ -71,8 +71,24 @@ function CommentGet(url, action, cno) {
 	});
 }
 
-function BoardDelete(url, action, type) {
-	if (type != null) {
+function BoardPageReturn(url, type) {
+	if (type != null && type == '') {
+		window.location = url;
+	} else {
+		window.location = url + '?type=' + type;
+	}
+}
+
+function BoardPageEdit(url, type) {
+	if (type != null && type == '') {
+		window.location = url;
+	} else {
+		window.location = url + '&type=' + type;
+	}
+}
+
+function BoardPageDelete(url, action, type) {
+	if (type != null && type == '') {
 		$.ajax({
 			type : action,
 			url : url,
@@ -83,7 +99,7 @@ function BoardDelete(url, action, type) {
 			dataType : "text",
 			success : function(result) {
 				alert('성공');
-				window.location = '/company/board?type=' + type
+				window.location = '/company/board'
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				alert('덧글이 달린 게시물은 지울수 없습니다');
@@ -100,7 +116,7 @@ function BoardDelete(url, action, type) {
 			dataType : "text",
 			success : function(result) {
 				alert('성공');
-				window.location = '/company/board'
+				window.location = '/company/board?type=' + type
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				alert('덧글이 달린 게시물은 지울수 없습니다');
