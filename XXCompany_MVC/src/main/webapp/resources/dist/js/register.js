@@ -66,8 +66,8 @@ $(document).ready(function() {
 				dataType : "text",
 				data : { username : username },
 				success : function(result) {
-					if (result == "SUCCESS") { showSuccessMessage('username_result', "사용 가능한 아이디 입니다"); $('#username').attr('readonly', ''); boolAdmID = true; }
-					else { showErroMessage('username_result', "사용 불가능한 아이디 입니다"); $("#username").val(""); $('#username').focus(); }
+					if (result == "SUCCESS") { showSuccessMessage('username_result', username + '님 반갑습니다.'); $('#username').attr('readonly', ''); boolAdmID = true; }
+					else { showErroMessage('username_result', username + '의 이름은 이미 가입되어 있습니다.'); $("#username").val(""); $('#username').focus(); }
 					boolAdmID = true;
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -75,7 +75,7 @@ $(document).ready(function() {
 				}
 			});
 		} else {
-			alert("아이디는 공백이 될수 없습니다."); $('#username').focus();
+			alert("이름(아이디)은 공백이 될수 없습니다."); $('#username').focus();
 			return;
 		}
 	});
@@ -105,7 +105,7 @@ $(document).ready(function() {
 	});
 	
 	$('#CLICK').click(function() {
-		if (!boolAdmID) { alert('아이디(e-mail) 을 확인해주세요'); $('#username').focus(); }
+		if (!boolAdmID) { alert('이름(아이디)을 확인해주세요'); $('#username').focus(); }
 		else if (!boolAdmJoindate) { alert('입사일 확인해주세요'); $('#joindate').focus(); }
 		else if (!boolAdmPass) { alert('비밀번호를 확인해주세요'); $('#password1').focus(); }
 		else { $('#registerFROM').submit(); }

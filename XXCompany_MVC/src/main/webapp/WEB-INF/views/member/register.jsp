@@ -49,7 +49,7 @@
 			<p class="login-box-msg">Register a new membership</p>
 			<form id="registerFROM" action="/member/registerPost" method="post">
 				<div class="form-group has-feedback">
-					<input type="text" id="username" name="username" class="form-control" placeholder="이름">
+					<input type="text" id="username" name="username" class="form-control" placeholder="이름(아이디)">
 					<span class="glyphicon glyphicon-user form-control-feedback"></span>
 					<input type="button" id="dbCheck" class="btn btn-primary btn-block btn-flat" value="중복체크" />
 					<div id="username_result" class="form-control"></div>
@@ -58,6 +58,11 @@
 					<input type="text" id="joindate" name="joindate" class="form-control" placeholder="입사일">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 					<div id="joindate_result" class="form-control"></div>
+				</div>
+				<div class="form-group has-feedback">
+					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info">
+						비밀번호 입력 예시
+					</button>
 				</div>
 				<div class="form-group has-feedback">
 					<input type="password" id="password1" name="password1" class="form-control" placeholder="Password">
@@ -91,6 +96,27 @@
 		<!-- /.form-box -->
 	</div>
 	<!-- /.register-box -->
+	
+	<div class="modal modal-info fade" id="modal-info">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span></button>
+					<h4 class="modal-title">비밀번호 입력 예시</h4>
+				</div>
+				<div class="modal-body">
+					<p>대소문자와 숫자 특수문자 포함이 되어야됩니다.</p>
+					<p>ex) Password12!@</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">확인</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
 	
 	<script>
 		$(function() {
