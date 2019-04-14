@@ -24,6 +24,13 @@
 				}
 			</script>
 			
+			<%
+				String error = (String) session.getAttribute("error");
+				if (error != null) {
+					session.removeAttribute("error");
+				}
+			%>
+			
 			<!-- Main content -->
 			<section class="content">
 				<!-- Info boxes -->

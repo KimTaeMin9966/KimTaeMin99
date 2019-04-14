@@ -356,9 +356,7 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="/working/order"><i class="fa fa-circle-o"></i> 작업 일지</a></li>
-							<li><a href="/working/order"><i class="fa fa-circle-o"></i> 작업 지시서</a></li>
-							<li><a href="/working/order"><i class="fa fa-circle-o"></i> 작업 지시서</a></li>
+							<li><a href="/working/day"><i class="fa fa-circle-o"></i> 작업 일지</a></li>
 							<li><a href="/working/order"><i class="fa fa-circle-o"></i> 작업 지시서</a></li>
 						</ul>
 					</li>

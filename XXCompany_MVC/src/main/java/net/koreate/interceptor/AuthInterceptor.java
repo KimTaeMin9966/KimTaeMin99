@@ -33,7 +33,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			String username = user.getUsername();
 			String auth = service.getUserAuthByUsername(username);
 			
-			if (auth.equals("사장님") || auth.equals("관계자") || auth.equals("웹관리자")) {
+			if (auth.equals("사장") || auth.equals("관계자") || auth.equals("웹관리자")) {
 				System.out.println(username + "님 반갑습니다.");
 				return true;
 			} else {

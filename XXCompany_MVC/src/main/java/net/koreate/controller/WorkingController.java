@@ -35,8 +35,14 @@ public class WorkingController {
 	}
 	*/
 	
+	@GetMapping(value = "/day") // Spring Framework V4.3
+	public void dayGetMethod() {
+		logger.info("dayGetMethod Called!!!");
+	}
+	
 	@GetMapping(value = "/order") // Spring Framework V4.3
 	public void orderGetMethod() {
 		logger.info("orderGetMethod Called!!!");
 	}
+	
 }
