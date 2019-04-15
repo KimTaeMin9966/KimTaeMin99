@@ -29,6 +29,7 @@
 		
 		<interceptor>
 			<mapping path="/management/*" />
+			<mapping path="/working/orderWrite"/>
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 	</interceptors>

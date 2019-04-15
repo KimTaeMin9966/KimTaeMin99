@@ -14,7 +14,21 @@
 					<li class="active">작업 지시서</li>
 				</ol>
 			</section>
-		
+			
+			<script type="text/javascript">
+				var message = '${error}';
+				if (message != null && message != '') {
+					alert(message);
+				}
+			</script>
+			
+			<%
+				String error = (String) session.getAttribute("error");
+				if (error != null) {
+					session.removeAttribute("error");
+				}
+			%>
+			
 			<!-- Main content -->
 			<section class="content">
 				<div class="row">
