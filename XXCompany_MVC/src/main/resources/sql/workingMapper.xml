@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.koreate.dao.WorkingDao">
+	<select id="orderGetMethod" resultType="odvo">
+		SELECT * FROM XXCompany_Orders
+	</select>
+	<select id="ordersCount" resultType="int">
+		SELECT COUNT(*) FROM XXCompany_Orders
+	</select>
+	<insert id="orderWritePostMethod">
+		INSERT INTO XXCompany_Orders(writer, urgency, delivery, content)
+		VALUES(#{writer}, #{urgency}, #{delivery}, #{content})
+	</insert>
+</mapper>

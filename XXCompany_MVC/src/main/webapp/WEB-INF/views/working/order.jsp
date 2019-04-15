@@ -5,7 +5,9 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>작업 지시서</h1>
+				<h1>
+					${homePage_title} <small>작업 지시서입니다.</small>
+				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 					<li><a href="#">작업 관리</a></li>
@@ -19,16 +21,28 @@
 					<div class="col-xs-12">
 						<div class="box">
 							<div class="box-header">
-								<h3 class="box-title">작업 지시서</h3>
+								<h3 class="box-title">
+									작업 지시서
+									<a href="/working/orderWrite" type="button" class="btn btn-default">작업지시 글 쓰기</a>
+								</h3>
 								<div class="box-tools">
-									<div class="input-group input-group-sm" style="width: 150px;">
-										<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-										<div class="input-group-btn">
-											<button type="submit" class="btn btn-default">
-												<i class="fa fa-search"></i>
-											</button>
-										</div>
-									</div>
+									<ul class="pagination pagination-sm no-margin pull-right">
+									<c:if test="${pageMaker.prev}">
+										<li>
+											<a href="/working/order${pageMaker.makeQuery(pageMaker.startPage - 1)}">&laquo;</a>
+										</li>
+									</c:if>
+									<c:forEach var="i" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+										<li <c:out value="${pageMaker.cri.page == i ?'class=active':''}"/>>
+											<a href="/working/order${pageMaker.makeQuery(i)}">${i}</a>
+										</li>
+									</c:forEach>
+									<c:if test="${pageMaker.next}">
+										<li>
+											<a href="/working/order${pageMaker.makeQuery(pageMaker.endPage + 1)}">&raquo;</a>
+										</li>
+									</c:if>
+									</ul>
 								</div>
 							</div>
 							<!-- /.box-header -->
@@ -36,47 +50,33 @@
 								<table class="table table-hover">
 									<thead>
 										<tr>
-											<th>글번호</th>
-											<th>User</th>
-											<th>Date</th>
-											<th>Status</th>
-											<th>Reason</th>
+											<th style="width: 6%">글번호</th>
+											<th style="width: 5.5%">작성자</th>
+											<th style="width: 6%">긴급도</th>
+											<th style="width: 16%">출고일</th>
+											<th style="width: 50%">재료명 / 갯수</th>
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach var="order" items="${orders}">
 										<tr>
-											<td>183</td>
-											<td>John Doe</td>
-											<td>11-7-2014</td>
-											<td><span class="label label-success">Approved</span></td>
-											<td>Bacon ipsum dolor sit amet salami venison chicken
-												flank fatback doner.</td>
+											<td>${order.ono}</td>
+											<td>${order.writer}</td>
+											<td>${order.urgency}</td>
+											<td>${order.delivery}</td>
+											<td>${order.content}</td>
 										</tr>
-										<tr>
-											<td>219</td>
-											<td>Alexander Pierce</td>
-											<td>11-7-2014</td>
-											<td><span class="label label-warning">Pending</span></td>
-											<td>Bacon ipsum dolor sit amet salami venison chicken
-												flank fatback doner.</td>
-										</tr>
-										<tr>
-											<td>657</td>
-											<td>Bob Doe</td>
-											<td>11-7-2014</td>
-											<td><span class="label label-primary">Approved</span></td>
-											<td>Bacon ipsum dolor sit amet salami venison chicken
-												flank fatback doner.</td>
-										</tr>
-										<tr>
-											<td>175</td>
-											<td>Mike Doe</td>
-											<td>11-7-2014</td>
-											<td><span class="label label-danger">Denied</span></td>
-											<td>Bacon ipsum dolor sit amet salami venison chicken
-												flank fatback doner.</td>
-										</tr>
+									</c:forEach>
 									</tbody>
+									<tfoot>
+										<tr>
+											<th>글번호</th>
+											<th>작성자</th>
+											<th>긴급도</th>
+											<th>출고일</th>
+											<th>재료명 / 갯수</th>
+										</tr>
+									</tfoot>
 								</table>
 							</div>
 							<!-- /.box-body -->

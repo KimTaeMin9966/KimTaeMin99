@@ -7,10 +7,12 @@
 		<typeAlias alias="mbvo" type="net.koreate.vo.MemberVo" />
 		<typeAlias alias="bdvo" type="net.koreate.vo.BoardVo" />
 		<typeAlias alias="cmvo" type="net.koreate.vo.CommentsVo" />
+		<typeAlias alias="odvo" type="net.koreate.vo.OrderVo" />
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="sql/memberMapper.xml" />
 		<mapper resource="sql/boardMapper.xml" />
+		<mapper resource="sql/workingMapper.xml" />
 	</mappers>
 </configuration>

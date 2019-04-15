@@ -16,7 +16,7 @@
 	<!-- jQuery 3 -->
 	<script charset="utf-8" src="/resources/bower_components/jquery/dist/jquery.min.js?version=2"></script>
 	<!-- jQuery UI 1.11.4 -->
-	<script src="/resources/bower_components/jquery-ui/jquery-ui.min.js"></script>
+	<script charset="utf-8" src="/resources/bower_components/jquery-ui/jquery-ui.min.js"></script>
 	<!-- Bootstrap 3.3.7 -->
 	<script charset="utf-8" src="/resources/bower_components/bootstrap/dist/js/bootstrap.min.js?version=2"></script>
 	<!-- FastClick -->
@@ -55,6 +55,35 @@
 	
 	<!-- Google Font -->
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	
+	<script id="date_format" type="text/javascript">
+		Date.prototype.format = function(f) {
+		    if (!this.valueOf()) return " ";
+		 
+		    var weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+		    var d        = this;
+		     
+		    return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, function($1) {
+		        switch ($1) {
+		            case "yyyy" : return d.getFullYear();
+		            case "yy"   : return (d.getFullYear() % 1000).zf(2);
+		            case "MM"   : return (d.getMonth() + 1).zf(2);
+		            case "dd"   : return d.getDate().zf(2);
+		            case "E"    : return weekName[d.getDay()];
+		            case "HH"   : return d.getHours().zf(2);
+		            case "hh"   : return ((h = d.getHours() % 12) ? h : 12).zf(2);
+		            case "mm"   : return d.getMinutes().zf(2);
+		            case "ss"   : return d.getSeconds().zf(2);
+		            case "a/p"  : return d.getHours() < 12 ? "오전" : "오후";
+		            default     : return $1;
+		        }
+		    });
+		};
+		 
+		String.prototype.string = function(len){var s = '', i = 0; while (i++ < len) { s += this; } return s;};
+		String.prototype.zf     = function(len){return "0".string(len - this.length) + this;};
+		Number.prototype.zf     = function(len){return this.toString().zf(len);};
+	</script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -333,14 +362,14 @@
 				<!-- /.search form -->
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu" data-widget="tree">
-					<li class="header">MAIN NAVIGATION</li>
+					<li class="header">메뉴</li>
 					<li class="active">
 						<a href="/">
 							<i class="fa fa-home"></i>
 							<span>HOME</span>
 						</a>
 					</li>
-				<c:if test="${member.auth eq '사장님' or member.auth eq '웹관리자' or member.auth eq '관계자'}">
+				<c:if test="${member.auth eq '사장' or member.auth eq '웹관리자' or member.auth eq '관계자'}">
 					<li>
 						<a href="/management/member">
 							<i class="fa fa-users"></i>
@@ -356,7 +385,6 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="/working/day"><i class="fa fa-circle-o"></i> 작업 일지</a></li>
 							<li><a href="/working/order"><i class="fa fa-circle-o"></i> 작업 지시서</a></li>
 						</ul>
 					</li>
@@ -374,131 +402,6 @@
 							<li><a href="/company/board?type=notification"><i class="fa fa-circle-o"></i> 공지글 보러가기</a></li>
 						</ul>
 					</li>
-					<li class="treeview">
-						<a href="#">
-							<i class="fa fa-laptop"></i>
-							<span>UI Elements</span>
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-							<li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-							<li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-							<li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-							<li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-							<li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-						</ul>
-					</li>
-					<li class="treeview">
-						<a href="#">
-							<i class="fa fa-edit"></i>
-							<span>Forms</span>
-							<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-							<li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-							<li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-						</ul>
-					</li>
-					<li class="treeview">
-						<a href="#">
-							<i class="fa fa-table"></i>
-							<span>Tables</span>
-								<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-							<li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="pages/calendar.html">
-							<i class="fa fa-calendar"></i>
-							<span>Calendar</span>
-							<span class="pull-right-container">
-								<small class="label pull-right bg-red">3</small>
-								<small class="label pull-right bg-blue">17</small>
-							</span>
-						</a>
-					</li>
-					<li>
-						<a href="pages/mailbox/mailbox.html">
-							<i class="fa fa-envelope"></i>
-							<span>Mailbox</span>
-							<span class="pull-right-container">
-								<small class="label pull-right bg-yellow">12</small>
-								<small class="label pull-right bg-green">16</small>
-								<small class="label pull-right bg-red">5</small>
-							</span>
-						</a>
-					</li>
-					<li class="treeview">
-						<a href="#">
-							<i class="fa fa-folder"></i>
-							<span>Examples</span>
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-							<li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-							<li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-							<li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-							<li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-							<li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-							<li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-							<li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-							<li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
-						</ul>
-					</li>
-					<li class="treeview">
-						<a href="#">
-							<i class="fa fa-share"></i>
-							<span>Multilevel</span>
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-							<li class="treeview">
-								<a href="#"><i class="fa fa-circle-o"></i> Level One
-									<span class="pull-right-container">
-										<i class="fa fa-angle-left pull-right"></i>
-									</span>
-								</a>
-								<ul class="treeview-menu">
-									<li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-									<li class="treeview">
-										<a href="#">
-											<i class="fa fa-circle-o"></i> Level Two
-											<span class="pull-right-container">
-												<i class="fa fa-angle-left pull-right"></i>
-											</span>
-										</a>
-										<ul class="treeview-menu">
-											<li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-											<li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-circle-o"></i> Level One</a>
-							</li>
-						</ul>
-					</li>
-					<li><a href="//adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-					<li class="header">LABELS</li>
-					<li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-					<li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-					<li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
 				</ul>
 			</section>
 			<!-- /.sidebar -->
