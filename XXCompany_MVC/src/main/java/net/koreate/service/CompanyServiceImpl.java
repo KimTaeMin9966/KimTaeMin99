@@ -85,12 +85,14 @@ public class CompanyServiceImpl implements CompanyService {
 	public void writePostMethod(BoardVo vo) {
 		// TODO Auto-generated method stub
 		dao.writePostMethod(vo);
+		dao.updateBoardCount(vo);
 	}
 
 	@Override
 	public void writeCommentPostMethod(CommentsVo vo) {
 		// TODO Auto-generated method stub
 		dao.writeCommentPostMethod(vo);
+		dao.updateCommentCount(vo);
 	}
 
 	@Override

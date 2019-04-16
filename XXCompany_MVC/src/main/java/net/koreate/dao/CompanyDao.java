@@ -23,5 +23,7 @@ public interface CompanyDao {
 	void writeCommentPostMethod(CommentsVo vo);
 	CommentsVo CommentEditGetMethod(int cno);
 	void CommentEditPostMethod(CommentsVo vo);
+	void updateBoardCount(BoardVo vo);
+	void updateCommentCount(CommentsVo vo);
 	
 }

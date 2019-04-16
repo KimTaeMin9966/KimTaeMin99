@@ -13,6 +13,9 @@ public class MemberVo {
 	private boolean isOut;
 	private Date regdate;
 	private Date editdate;
+	private int boradConut;
+	private int commentConut;
+	private int Count;
 
 	public int getUserno() {
 		return userno;
@@ -94,11 +97,36 @@ public class MemberVo {
 		this.editdate = editdate;
 	}
 
+	public int getBoradConut() {
+		return boradConut;
+	}
+
+	public void setBoradConut(int boradConut) {
+		this.boradConut = boradConut;
+	}
+
+	public int getCommentConut() {
+		return commentConut;
+	}
+
+	public void setCommentConut(int commentConut) {
+		this.commentConut = commentConut;
+	}
+
+	public int getCount() {
+		return Count;
+	}
+
+	public void setCount(int count) {
+		Count = count;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVo [userno=" + userno + ", username=" + username + ", auth=" + auth + ", joindate=" + joindate
 				+ ", password=" + password + ", password1=" + password1 + ", password2=" + password2 + ", isOut="
-				+ isOut + ", regdate=" + regdate + ", editdate=" + editdate + "]";
+				+ isOut + ", regdate=" + regdate + ", editdate=" + editdate + ", boradConut=" + boradConut
+				+ ", commentConut=" + commentConut + ", Count=" + Count + "]";
 	}
 
 }

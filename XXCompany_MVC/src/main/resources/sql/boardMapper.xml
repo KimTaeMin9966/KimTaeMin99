@@ -52,4 +52,16 @@
 		UPDATE CompanyBoardComments SET comments = #{comments}
 		WHERE bno = #{bno}
 	</update>
+	<update id="updateBoardCount">
+		<![CDATA[
+			UPDATE XXCompany_Member SET boradConut = boradConut + 1
+			WHERE username = #{writer}
+		]]>
+	</update>
+	<update id="updateCommentCount">
+		<![CDATA[
+			UPDATE XXCompany_Member SET commentConut = commentConut + 1
+			WHERE username = #{writer}
+		]]>
+	</update>
 </mapper>
