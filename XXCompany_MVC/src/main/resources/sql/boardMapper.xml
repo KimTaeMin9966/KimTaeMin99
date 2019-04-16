@@ -50,7 +50,7 @@
 	</select>
 	<update id="CommentEditPostMethod">
 		UPDATE CompanyBoardComments SET comments = #{comments}
-		WHERE bno = #{bno}
+		WHERE cno = #{cno}
 	</update>
 	<update id="updateBoardCount">
 		<![CDATA[
