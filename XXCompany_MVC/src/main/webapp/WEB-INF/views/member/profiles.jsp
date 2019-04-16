@@ -25,9 +25,9 @@
 								<h3 class="profile-username text-center">[${profile.auth}] ${profile.username}</h3>
 								<p class="text-muted text-center"><fmt:formatDate value="${profile.regdate}" pattern="yyyy-MM-dd HH:mm" /></p>
 								<ul class="list-group list-group-unbordered">
-									<li class="list-group-item"><b>내가 작성한 게시글 수</b><a class="pull-right"><fmt:formatDate value="${profile.boradConut}" pattern="yyyy-MM-dd HH:mm" /></a></li>
-									<li class="list-group-item"><b>내가 작성한 덧글 수</b><a class="pull-right"><fmt:formatDate value="${profile.commentConut}" pattern="yyyy-MM-dd HH:mm" /></a></li>
-									<li class="list-group-item"><b>내가 작업한 총량</b><a class="pull-right"><fmt:formatDate value="${profile.Conut}" pattern="yyyy-MM-dd HH:mm" /></a></li>
+									<li class="list-group-item"><b>내가 작성한 게시글 수</b><a class="pull-right"><fmt:formatNumber value="${profile.boradConut}" pattern="#,###.##" /></a></li>
+									<li class="list-group-item"><b>내가 작성한 덧글 수</b><a class="pull-right"><fmt:formatNumber value="${profile.commentConut}" pattern="#,###.##" /></a></li>
+									<li class="list-group-item"><b>내가 작업한 총량</b><a class="pull-right"><fmt:formatNumber value="${profile.deliveryCount}" pattern="#,###.##" /></a></li>
 								</ul>
 								<a href="#" class="btn btn-primary btn-block"><b>메일 발송</b></a>
 							</div>

@@ -15,7 +15,7 @@ public class MemberVo {
 	private Date editdate;
 	private int boradConut;
 	private int commentConut;
-	private int Count;
+	private int deliveryCount;
 
 	public int getUserno() {
 		return userno;
@@ -113,12 +113,12 @@ public class MemberVo {
 		this.commentConut = commentConut;
 	}
 
-	public int getCount() {
-		return Count;
+	public int getDeliveryCount() {
+		return deliveryCount;
 	}
 
-	public void setCount(int count) {
-		Count = count;
+	public void setDeliveryCount(int deliveryCount) {
+		this.deliveryCount = deliveryCount;
 	}
 
 	@Override
@@ -126,7 +126,7 @@ public class MemberVo {
 		return "MemberVo [userno=" + userno + ", username=" + username + ", auth=" + auth + ", joindate=" + joindate
 				+ ", password=" + password + ", password1=" + password1 + ", password2=" + password2 + ", isOut="
 				+ isOut + ", regdate=" + regdate + ", editdate=" + editdate + ", boradConut=" + boradConut
-				+ ", commentConut=" + commentConut + ", Count=" + Count + "]";
+				+ ", commentConut=" + commentConut + ", deliveryCount=" + deliveryCount + "]";
 	}
 
 }
