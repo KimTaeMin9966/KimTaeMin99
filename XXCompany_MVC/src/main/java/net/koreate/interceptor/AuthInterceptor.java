@@ -40,12 +40,11 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			}
 			if (auth.equals("사장") || auth.equals("관계자") || auth.equals("웹관리자")) { return true; }
 			else {
-				Object dest = session.getAttribute("dest");
 				session.setAttribute("error", username + "님은 권한이 없어 접근을 제한 합니다.");
-				response.sendRedirect(dest != null ? (String)dest : "/wedding");
+				response.sendRedirect("/");
+				return false;
 			}
 		}
-		return false;
 	}
 
 }
