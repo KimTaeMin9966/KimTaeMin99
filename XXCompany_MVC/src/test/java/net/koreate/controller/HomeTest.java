@@ -6,8 +6,7 @@ public class HomeTest {
 	
 	@Test
 	public void Test() {
-		boolean a = true;
-		System.out.println(a);
+		
 	}
-
+	
 }
