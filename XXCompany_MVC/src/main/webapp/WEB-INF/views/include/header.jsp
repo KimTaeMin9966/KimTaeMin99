@@ -85,7 +85,7 @@
 		Number.prototype.zf     = function(len){return this.toString().zf(len);};
 	</script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
 	<div class="wrapper">
 		<header class="main-header">
 			<!-- Logo -->

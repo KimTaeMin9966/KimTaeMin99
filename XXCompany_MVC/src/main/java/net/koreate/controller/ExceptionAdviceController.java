@@ -41,7 +41,7 @@ public class ExceptionAdviceController {
 	@ExceptionHandler(MissingServletRequestParameterException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	private ModelAndView Error400(Exception e) {
-		logger.info("ERROR 400");
+		logger.info("ERROR 400 {}", e.getMessage());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", e);
 		mav.setViewName("error/400");
@@ -51,7 +51,7 @@ public class ExceptionAdviceController {
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	private ModelAndView Error404(Exception e) {
-		logger.info("ERROR 404");
+		logger.info("ERROR 404 {}", e.getMessage());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", e);
 		mav.setViewName("error/404");
@@ -61,17 +61,17 @@ public class ExceptionAdviceController {
 	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
 	@ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
 	private ModelAndView Error405(Exception e) {
-		logger.info("ERROR 404");
+		logger.info("ERROR 404 {}", e.getMessage());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", e);
 		mav.setViewName("error/405");
 		return mav;
 	}
 
-	@ExceptionHandler({Exception.class, PropertyNotFoundException.class})
+	@ExceptionHandler({PropertyNotFoundException.class, RuntimeException.class, Exception.class})
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	private ModelAndView Error500(Exception e) {
-		logger.info("ERROR 500");
+		logger.info("ERROR 500 {}", e.getMessage());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", e);
 		mav.setViewName("error/500");
