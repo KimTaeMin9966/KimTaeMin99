@@ -70,4 +70,19 @@ public class WorkingController {
 		return "redirect:/working/order";
 	}
 	
+	@GetMapping(value = "/materials") // Spring Framework V4.3
+	public void materialsGetMethod() {
+		logger.info("materialsGetMethod Called!!!");
+	}
+	
+	@GetMapping(value = "/wearing") // Spring Framework V4.3
+	public void wearingGetMethod() {
+		logger.info("wearingGetMethod Called!!!");
+	}
+	
+	@GetMapping(value = "/release") // Spring Framework V4.3
+	public void releaseGetMethod() {
+		logger.info("releaseGetMethod Called!!!");
+	}
+	
 }
