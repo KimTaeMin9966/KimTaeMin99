@@ -263,7 +263,7 @@
 								<li class="user-body">
 									<div class="row">
 								<c:choose>
-									<c:when test="${member.username eq '김태민'}">
+									<c:when test="${member.auth eq '사장' or member.auth eq '관계자' or member.auth eq '웹관리자'}">
 										<div class="col-xs-4 text-center"><a href="/company/board">전체글</a></div>
 										<div class="col-xs-4 text-center"><a href="/company/write">글 작성</a></div>
 										<div class="col-xs-4 text-center"><a href="/company/board?type=notification">공지글</a></div>	
@@ -369,7 +369,7 @@
 							<span>HOME</span>
 						</a>
 					</li>
-				<c:if test="${member.auth eq '사장' or member.auth eq '웹관리자' or member.auth eq '관계자'}">
+				<c:if test="${member.auth eq '사장' or member.auth eq '관계자' or member.auth eq '웹관리자'}">
 					<li>
 						<a href="/management/member">
 							<i class="fa fa-users"></i>
@@ -408,7 +408,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="/chatting">
+						<a href="/chatting/home">
 							<i class="fa fa-users"></i>
 							<span>채팅방</span>
 						</a>

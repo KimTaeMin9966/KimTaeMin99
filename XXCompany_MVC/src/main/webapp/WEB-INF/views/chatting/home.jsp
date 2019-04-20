@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="include/header.jsp"%>
+<%@ include file="../include/header.jsp"%>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -19,7 +19,7 @@
 			<div class="col-lg-3"></div>
 			<div class="col-lg-6">
 				<!-- DIRECT CHAT -->
-				<div class="box box-warning direct-chat direct-chat-warning">
+				<div class="box box-info direct-chat direct-chat-warning">
 					<div class="box-header with-border">
 						<h3 class="box-title">${homePage_title}</h3>
 						<div class="box-tools pull-right">
@@ -115,54 +115,6 @@
 									</a>
 								</li>
 								<!-- End Contact Item -->
-								<li>
-									<a href="#">
-										<img class="contacts-list-img" src="/resources/dist/img/user1-128x128.jpg" alt="User Image">
-										<div class="contacts-list-info">
-											<span class="contacts-list-name"> Count Dracula
-												<small class="contacts-list-date pull-right">2/28/2015</small>
-											</span>
-											<span class="contacts-list-msg">How have you been? I was...</span>
-										</div> <!-- /.contacts-list-info -->
-									</a>
-								</li>
-								<!-- End Contact Item -->
-								<li>
-									<a href="#">
-										<img class="contacts-list-img" src="/resources/dist/img/user1-128x128.jpg" alt="User Image">
-										<div class="contacts-list-info">
-											<span class="contacts-list-name"> Count Dracula
-												<small class="contacts-list-date pull-right">2/28/2015</small>
-											</span>
-											<span class="contacts-list-msg">How have you been? I was...</span>
-										</div> <!-- /.contacts-list-info -->
-									</a>
-								</li>
-								<!-- End Contact Item -->
-								<li>
-									<a href="#">
-										<img class="contacts-list-img" src="/resources/dist/img/user1-128x128.jpg" alt="User Image">
-										<div class="contacts-list-info">
-											<span class="contacts-list-name"> Count Dracula
-												<small class="contacts-list-date pull-right">2/28/2015</small>
-											</span>
-											<span class="contacts-list-msg">How have you been? I was...</span>
-										</div> <!-- /.contacts-list-info -->
-									</a>
-								</li>
-								<!-- End Contact Item -->
-								<li>
-									<a href="#">
-										<img class="contacts-list-img" src="/resources/dist/img/user1-128x128.jpg" alt="User Image">
-										<div class="contacts-list-info">
-											<span class="contacts-list-name"> Count Dracula
-												<small class="contacts-list-date pull-right">2/28/2015</small>
-											</span>
-											<span class="contacts-list-msg">How have you been? I was...</span>
-										</div> <!-- /.contacts-list-info -->
-									</a>
-								</li>
-								<!-- End Contact Item -->
 							</ul>
 							<!-- /.contatcts-list -->
 						</div>
@@ -189,4 +141,4 @@
 	<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<%@ include file="include/footer.jsp"%>
+<%@ include file="../include/footer.jsp"%>

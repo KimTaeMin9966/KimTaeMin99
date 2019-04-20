@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -45,9 +44,5 @@ public class HomeController {
 		session.setAttribute("homePage_title", "(주)태성전자");
 		return "home";
 	}
-
-	@GetMapping(value = "/chatting") // Spring Framework V4.3
-	public void chattingGetMethod() {
-		logger.info("chattingGetMethod Called!!!");
-	}
+	
 }
