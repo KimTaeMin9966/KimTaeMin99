@@ -407,6 +407,12 @@
 							<li><a href="/company/board?type=notification"><i class="fa fa-circle-o"></i> 공지글 보러가기</a></li>
 						</ul>
 					</li>
+					<li>
+						<a href="/chatting">
+							<i class="fa fa-users"></i>
+							<span>채팅방</span>
+						</a>
+					</li>
 				</ul>
 			</section>
 			<!-- /.sidebar -->
