@@ -6,7 +6,7 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					${homePage_title} <small>작업 지시서입니다.</small>
+					${homePage_title} <small>출고 관리입니다.</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -55,7 +55,6 @@
 									</c:if>
 									</ul>
 								</div>
-							</div>
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body no-padding">
