@@ -21,7 +21,7 @@
 		</div> */
 		setInterval(function() {
 			$('.box-body').load('/chatting/home .direct-chat-messages');
-		}, 10000);
+		}, 30000);
 		$('.direct-chat-messages').scrollTop($('.direct-chat-messages')[0].scrollHeight);
 	</script>
 	
@@ -33,7 +33,7 @@
 				<!-- DIRECT CHAT -->
 				<div class="box box-info direct-chat direct-chat-warning">
 					<div class="box-header with-border">
-						<h3 class="box-title">${homePage_title}</h3>
+						<h3 class="box-title">${homePage_title} <small>30초마다 새로 고침됩니다.</small></h3>
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse">
 								<i class="fa fa-minus"></i>
