@@ -12,7 +12,19 @@
 			<li class="active">채팅방</li>
 		</ol>
 	</section>
-
+	
+	<!-- chatting -->
+	<script charset="utf-8" src="/resources/dist/js/chatting.js?version=2"></script>
+	<script type="text/javascript">
+		/* <div class="overlay">
+			<i class="fa fa-refresh fa-spin"></i>
+		</div> */
+		setInterval(function() {
+			$('.box-body').load('/chatting/home .direct-chat-messages');
+		}, 10000);
+		$('.direct-chat-messages').scrollTop($('.direct-chat-messages')[0].scrollHeight);
+	</script>
+	
 	<!-- Main content -->
 	<section class="content">
 		<div class="row">
@@ -26,7 +38,8 @@
 							<button type="button" class="btn btn-box-tool" data-widget="collapse">
 								<i class="fa fa-minus"></i>
 							</button>
-							<button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-widget="chat-pane-toggle" data-original-title="Contacts">
+							<button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="New Message"
+								data-widget="chat-pane-toggle" data-original-title="Contacts">
 								<i class="fa fa-comments"></i>
 							</button>
 							<button type="button" class="btn btn-box-tool" data-widget="remove">
@@ -38,83 +51,73 @@
 					<div class="box-body">
 						<!-- Conversations are loaded here -->
 						<div class="direct-chat-messages">
+				<c:forEach var="chatting" items="${chattings}">
+					<c:choose>
+						<c:when test="${chatting.writer eq member.username}">
 							<!-- Message. Default to the left -->
 							<div class="direct-chat-msg">
 								<div class="direct-chat-info clearfix">
-									<span class="direct-chat-name pull-left">Alexander Pierce</span>
-									<span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+									<span class="direct-chat-name pull-left">${chatting.writer}</span>
+									<span class="direct-chat-timestamp pull-right">
+										<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${chatting.regdate}" />
+									</span>
 								</div>
 								<!-- /.direct-chat-info -->
-								<img class="direct-chat-img" src="/resources/dist/img/user1-128x128.jpg" alt="message user image">
+								<img class="direct-chat-img" src="/resources/dist/img/user1-128x128.jpg"
+									alt="message user image">
 								<!-- /.direct-chat-img -->
 								<div class="direct-chat-text">
-									Is this template really for free? That's unbelievable!
+									${chatting.chat}
 								</div>
 								<!-- /.direct-chat-text -->
 							</div>
 							<!-- /.direct-chat-msg -->
-
+						</c:when>
+						<c:otherwise>
 							<!-- Message to the right -->
 							<div class="direct-chat-msg right">
 								<div class="direct-chat-info clearfix">
-									<span class="direct-chat-name pull-right">Sarah Bullock</span>
-									<span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+									<span class="direct-chat-name pull-right">${chatting.writer}</span>
+									<span class="direct-chat-timestamp pull-left">
+										<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${chatting.regdate}" />
+									</span>
 								</div>
 								<!-- /.direct-chat-info -->
-								<img class="direct-chat-img" src="/resources/dist/img/user3-128x128.jpg" alt="message user image">
-								<!-- /.direct-chat-img -->
-								<div class="direct-chat-text">You better believe it!</div>
-								<!-- /.direct-chat-text -->
-							</div>
-							<!-- /.direct-chat-msg -->
-
-							<!-- Message. Default to the left -->
-							<div class="direct-chat-msg">
-								<div class="direct-chat-info clearfix">
-									<span class="direct-chat-name pull-left">Alexander Pierce</span>
-									<span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
-								</div>
-								<!-- /.direct-chat-info -->
-								<img class="direct-chat-img" src="/resources/dist/img/user1-128x128.jpg" alt="message user image">
+								<img class="direct-chat-img" src="/resources/dist/img/user3-128x128.jpg"
+									alt="message user image">
 								<!-- /.direct-chat-img -->
 								<div class="direct-chat-text">
-									Working with AdminLTE on a great new app! Wanna join?
+									${chatting.chat}
 								</div>
 								<!-- /.direct-chat-text -->
 							</div>
 							<!-- /.direct-chat-msg -->
-
-							<!-- Message to the right -->
-							<div class="direct-chat-msg right">
-								<div class="direct-chat-info clearfix">
-									<span class="direct-chat-name pull-right">Sarah Bullock</span>
-									<span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
-								</div>
-								<!-- /.direct-chat-info -->
-								<img class="direct-chat-img" src="/resources/dist/img/user3-128x128.jpg" alt="message user image">
-								<!-- /.direct-chat-img -->
-								<div class="direct-chat-text">I would love to.</div>
-								<!-- /.direct-chat-text -->
-							</div>
-							<!-- /.direct-chat-msg -->
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
 						</div>
 						<!--/.direct-chat-messages-->
-
+						
 						<!-- Contacts are loaded here -->
 						<div class="direct-chat-contacts">
 							<ul class="contacts-list">
+							<c:forEach var="chatting" items="${chattings}">
 								<li>
-									<a href="#">
-										<img class="contacts-list-img" src="/resources/dist/img/user1-128x128.jpg" alt="User Image">
+									<a>
+										<img class="contacts-list-img" src="/resources/dist/img/user1-128x128.jpg"
+											alt="User Image">
 										<div class="contacts-list-info">
-											<span class="contacts-list-name"> Count Dracula
-												<small class="contacts-list-date pull-right">2/28/2015</small>
+											<span class="contacts-list-name"> ${chatting.writer}
+												<small class="contacts-list-date pull-right">
+													<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${chatting.regdate}" />
+												</small>
 											</span>
-											<span class="contacts-list-msg">How have you been? I was...</span>
+											<span class="contacts-list-msg">${chatting.chat}</span>
 										</div> <!-- /.contacts-list-info -->
 									</a>
 								</li>
 								<!-- End Contact Item -->
+							</c:forEach>
 							</ul>
 							<!-- /.contatcts-list -->
 						</div>
@@ -122,14 +125,14 @@
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer">
-						<form action="#" method="post">
-							<div class="input-group">
-								<input type="text" name="message" placeholder="Type Message ..." class="form-control">
-								<span class="input-group-btn">
-									<button type="button" class="btn btn-warning btn-flat">Send</button>
-								</span>
-							</div>
-						</form>
+						<div class="input-group">
+							<input type="hidden" name="writer" class="form-control" value="${member.username}">
+							<input type="text" name="message" placeholder="Type Message ..." class="form-control">
+							<span class="input-group-btn">
+								<button type="button" onclick="ChattingSend('/chatting/send', 'post');"
+									class="btn btn-warning btn-flat">Send</button>
+							</span>
+						</div>
 					</div>
 					<!-- /.box-footer-->
 				</div>

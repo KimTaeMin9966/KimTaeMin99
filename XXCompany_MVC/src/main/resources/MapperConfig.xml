@@ -8,11 +8,13 @@
 		<typeAlias alias="bdvo" type="net.koreate.vo.BoardVo" />
 		<typeAlias alias="cmvo" type="net.koreate.vo.CommentsVo" />
 		<typeAlias alias="odvo" type="net.koreate.vo.OrderVo" />
+		<typeAlias alias="chvo" type="net.koreate.vo.ChattingVo" />
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="sql/memberMapper.xml" />
 		<mapper resource="sql/boardMapper.xml" />
 		<mapper resource="sql/workingMapper.xml" />
+		<mapper resource="sql/chatingMapper.xml" />
 	</mappers>
 </configuration>

@@ -409,7 +409,7 @@
 					</li>
 					<li>
 						<a href="/chatting/home">
-							<i class="fa fa-users"></i>
+							<i class="fa fa-commenting"></i>
 							<span>채팅방</span>
 						</a>
 					</li>
