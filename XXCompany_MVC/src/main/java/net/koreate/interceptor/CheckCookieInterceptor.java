@@ -26,7 +26,7 @@ public class CheckCookieInterceptor extends HandlerInterceptorAdapter {
 		if (loginCookie != null) {
 			String username = loginCookie.getValue();
 			System.out.println("check Cookie username : " + username);
-			MemberVo vo = (MemberVo) service.profilesGetMethod(username); // Since - 2019/03/29, Content - 유저이름으로 정보 가져오기
+			MemberVo vo = service.profilesGetMethod(username); // Since - 2019/03/29, Content - 유저이름으로 정보 가져오기
 			if (vo != null) session.setAttribute("member", vo);
 		}
 		return true;
