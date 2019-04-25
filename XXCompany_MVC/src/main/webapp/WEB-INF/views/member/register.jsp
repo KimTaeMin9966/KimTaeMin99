@@ -106,8 +106,8 @@
 					<h4 class="modal-title">비밀번호 입력 예시</h4>
 				</div>
 				<div class="modal-body">
-					<p>대소문자와 숫자 특수문자 포함이 되어야됩니다.</p>
-					<p>ex) Password12!@</p>
+					<p>대소문자와 숫자가 포함이 되어야됩니다.</p>
+					<p>ex) Password12</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">확인</button>

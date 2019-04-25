@@ -27,8 +27,8 @@ $(document).ready(function() {
 	// 하이픈 없이 0 ~ 9까지 4자, 0 ~ 9까지 2자, 0 ~ 9까지 2자
 	var regexJoindate = /^[0-9]{4}[0-9]{2}[0-9]{2}$/;
 	
-	// 영어 대소문자, 숫자, 특수문자(!, @, #, $, %, ^, *, +, =, -)포함 8자리 ~ 16자리
-	var regexPass = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+	// 영어 대소문자, 숫자 포함 8자리 ~ 16자리
+	var regexPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/;
 
 	var boolAdmID = false;
 	var boolAdmJoindate = false;

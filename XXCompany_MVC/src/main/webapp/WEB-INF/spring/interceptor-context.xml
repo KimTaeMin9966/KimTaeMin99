@@ -29,7 +29,8 @@
 		
 		<interceptor>
 			<mapping path="/management/*" />
-			<mapping path="/working/orderWrite"/>
+			<mapping path="/chatting/home"/>
+			<mapping path="/working/*Write"/>
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 	</interceptors>
