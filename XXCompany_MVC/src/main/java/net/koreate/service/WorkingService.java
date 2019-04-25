@@ -9,7 +9,13 @@ import net.koreate.vo.PageMaker;
 public interface WorkingService {
 
 	List<OrderVo> orderGetMethod();
+	List<OrderVo> materialsGetMethod();
+	List<OrderVo> wearingGetMethod();
+	List<OrderVo> releaseGetMethod();
 	PageMaker getPageMaker(Criteria cri);
 	void orderWritePostMethod(OrderVo vo);
+	void materialsWritePostMethod(OrderVo vo);
+	void wearingWritePostMethod(OrderVo vo);
+	void releaseWritePostMethod(OrderVo vo);
 
 }

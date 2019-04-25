@@ -5,13 +5,42 @@
 
 <mapper namespace="net.koreate.dao.WorkingDao">
 	<select id="orderGetMethod" resultType="odvo">
-		SELECT * FROM XXCompany_Orders
+		<![CDATA[
+			SELECT * FROM XXCompany_Orders WHERE type = order
+		]]>
+	</select>
+	<select id="materialsGetMethod" resultType="odvo">
+		<![CDATA[
+			SELECT * FROM XXCompany_Orders WHERE type = materials
+		]]>
+	</select>
+	<select id="wearingGetMethod" resultType="odvo">
+		<![CDATA[
+			SELECT * FROM XXCompany_Orders WHERE type = wearing
+		]]>
+	</select>
+	<select id="releaseGetMethod" resultType="odvo">
+		<![CDATA[
+			SELECT * FROM XXCompany_Orders WHERE type = release
+		]]>
 	</select>
 	<select id="ordersCount" resultType="int">
 		SELECT COUNT(*) FROM XXCompany_Orders
 	</select>
 	<insert id="orderWritePostMethod">
-		INSERT INTO XXCompany_Orders(writer, urgency, delivery, content)
-		VALUES(#{writer}, #{urgency}, #{delivery}, #{content})
+		INSERT INTO XXCompany_Orders(type, writer, urgency, delivery, content)
+		VALUES(#{type}, #{writer}, #{urgency}, #{delivery}, #{content})
+	</insert>
+	<insert id="materialsWritePostMethod">
+		INSERT INTO XXCompany_Orders(type, writer, in_day, content, counting)
+		VALUES(#{type}, #{writer}, #{in_day}, #{content}, #{counting})
+	</insert>
+	<insert id="wearingWritePostMethod">
+		INSERT INTO XXCompany_Orders(type, writer, in_day, content, counting)
+		VALUES(#{type}, #{writer}, #{in_day}, #{content}, #{counting})
+	</insert>
+	<insert id="releaseWritePostMethod">
+		INSERT INTO XXCompany_Orders(type, writer, out_day, content, counting)
+		VALUES(#{type}, #{writer}, #{out_day}, #{content}, #{counting})
 	</insert>
 </mapper>

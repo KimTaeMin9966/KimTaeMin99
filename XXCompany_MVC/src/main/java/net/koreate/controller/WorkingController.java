@@ -71,18 +71,66 @@ public class WorkingController {
 	}
 	
 	@GetMapping(value = "/materials") // Spring Framework V4.3
-	public void materialsGetMethod() {
+	public void materialsGetMethod(@ModelAttribute("cri") Criteria cri, Model model) {
 		logger.info("materialsGetMethod Called!!!");
+		List<OrderVo> materials = service.materialsGetMethod();
+		PageMaker pageMaker = service.getPageMaker(cri);
+		model.addAttribute(pageMaker);
+		model.addAttribute("materials", materials);
+	}
+	
+	@GetMapping(value = "/materialsWrite") // Spring Framework V4.3
+	public void materialsWriteGetMethod() {
+		logger.info("materialsWriteGetMethod Called!!!");
+	}
+	
+	@PostMapping(value = "/materialsWrite") // Spring Framework V4.3
+	public String materialsWritePostMethod(OrderVo vo) {
+		logger.info("materialsWritePostMethod Called!!!");
+		service.materialsWritePostMethod(vo);
+		return "redirect:/working/materials";
 	}
 	
 	@GetMapping(value = "/wearing") // Spring Framework V4.3
-	public void wearingGetMethod() {
+	public void wearingGetMethod(@ModelAttribute("cri") Criteria cri, Model model) {
 		logger.info("wearingGetMethod Called!!!");
+		List<OrderVo> wearings = service.wearingGetMethod();
+		PageMaker pageMaker = service.getPageMaker(cri);
+		model.addAttribute(pageMaker);
+		model.addAttribute("wearings", wearings);
+	}
+	
+	@GetMapping(value = "/wearingWrite") // Spring Framework V4.3
+	public void wearingWriteGetMethod() {
+		logger.info("wearingWriteGetMethod Called!!!");
+	}
+	
+	@PostMapping(value = "/wearingWrite") // Spring Framework V4.3
+	public String wearingWritePostMethod(OrderVo vo) {
+		logger.info("wearingWritePostMethod Called!!!");
+		service.wearingWritePostMethod(vo);
+		return "redirect:/working/wearing";
 	}
 	
 	@GetMapping(value = "/release") // Spring Framework V4.3
-	public void releaseGetMethod() {
+	public void releaseGetMethod(@ModelAttribute("cri") Criteria cri, Model model) {
 		logger.info("releaseGetMethod Called!!!");
+		List<OrderVo> releases = service.releaseGetMethod();
+		PageMaker pageMaker = service.getPageMaker(cri);
+		model.addAttribute(pageMaker);
+		model.addAttribute("releases", releases);
+	}
+	
+	@GetMapping(value = "/releaseWrite") // Spring Framework V4.3
+	public void releaseWriteGetMethod() {
+		logger.info("releaseWriteGetMethod Called!!!");
+	}
+	
+	@PostMapping(value = "/releaseWrite") // Spring Framework V4.3
+	public String releaseWritePostMethod(OrderVo vo) {
+		logger.info("releaseWritePostMethod Called!!!");
+		service.releaseWritePostMethod(vo);
+		return "redirect:/working/release";
 	}
 	
 }

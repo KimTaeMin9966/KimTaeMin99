@@ -6,12 +6,12 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					${homePage_title} <small>작업 지시서입니다.</small>
+					${homePage_title} <small>입고 관리입니다.</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 					<li><a href="#">작업 관리</a></li>
-					<li><a href="#">작업 지시서</a></li>
+					<li><a href="#">입고 관리</a></li>
 					<li class="active">글쓰기</li>
 				</ol>
 			</section>
@@ -27,27 +27,19 @@
 								</div>
 								<!-- /.box-header -->
 								<div class="box-body">
-									<input type="hidden" value="order" name="type">
+									<input type="hidden" value="wearing" name="type">
 									<input type="hidden" value="${member.username}" name="writer">
 									<div class="form-group">
-										<label>긴급도</label>
-										<select name="urgency" class="form-control">
-											<optgroup label="긴급도">
-												<option value="5">긴급</option>
-												<option value="4">매우 급함</option>
-												<option value="3">급함</option>
-												<option value="2">조금 급함</option>
-												<option value="1">급하지 않음</option>
-											</optgroup>
-										</select>
+										<label>입고일</label>
+										<input name="in_day" type="text" class="form-control" placeholder="입고일 Enter ...">
 									</div>
 									<div class="form-group">
-										<label>출고일</label>
-										<input name="delivery" type="text" class="form-control" placeholder="Enter ...">
+										<label>자재명</label>
+										<input name="content" type="text" class="form-control" placeholder="자재명 Enter ...">
 									</div>
 									<div class="form-group">
-										<label>재료명 / 갯수</label>
-										<input name="content" type="text" class="form-control" placeholder="재료명 / 갯수 Enter ...">
+										<label>갯수</label>
+										<input name="counting" type="text" class="form-control" placeholder="갯수 Enter ...">
 									</div>
 								</div>
 								<!-- /.box-body -->

@@ -24,6 +24,24 @@ public class WorkingServiceImpl implements WorkingService {
 	}
 
 	@Override
+	public List<OrderVo> materialsGetMethod() {
+		// TODO Auto-generated method stub
+		return dao.materialsGetMethod();
+	}
+
+	@Override
+	public List<OrderVo> wearingGetMethod() {
+		// TODO Auto-generated method stub
+		return dao.wearingGetMethod();
+	}
+
+	@Override
+	public List<OrderVo> releaseGetMethod() {
+		// TODO Auto-generated method stub
+		return dao.releaseGetMethod();
+	}
+
+	@Override
 	public PageMaker getPageMaker(Criteria cri) {
 		// TODO Auto-generated method stub
 		cri.setPerPageNum(5);
@@ -38,6 +56,24 @@ public class WorkingServiceImpl implements WorkingService {
 	public void orderWritePostMethod(OrderVo vo) {
 		// TODO Auto-generated method stub
 		dao.orderWritePostMethod(vo);
+	}
+
+	@Override
+	public void materialsWritePostMethod(OrderVo vo) {
+		// TODO Auto-generated method stub
+		dao.materialsWritePostMethod(vo);
+	}
+
+	@Override
+	public void wearingWritePostMethod(OrderVo vo) {
+		// TODO Auto-generated method stub
+		dao.wearingWritePostMethod(vo);
+	}
+
+	@Override
+	public void releaseWritePostMethod(OrderVo vo) {
+		// TODO Auto-generated method stub
+		dao.releaseWritePostMethod(vo);
 	}
 	
 }

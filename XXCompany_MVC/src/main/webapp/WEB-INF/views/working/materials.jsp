@@ -57,12 +57,40 @@
 								</div>
 							</div>
 							<!-- /.box-header -->
-							<div class="box-body no-padding">
+							<div class="box-body table-responsive no-padding">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th style="width: 6%">글번호</th>
+											<th style="width: 5.5%">작성자</th>
+											<th style="width: 6%">긴급도</th>
+											<th style="width: 16%">출고일</th>
+											<th style="width: 50%">재료명 / 갯수</th>
+										</tr>
+									</thead>
+									<tbody>
+									<c:forEach var="material" items="${materials}">
+										<tr>
+											<td>${material.ono}</td>
+											<td>${material.writer}</td>
+											<td>${material.urgency}</td>
+											<td>${material.delivery}</td>
+											<td>${material.content}</td>
+										</tr>
+									</c:forEach>
+									</tbody>
+									<tfoot>
+										<tr>
+											<th>글번호</th>
+											<th>작성자</th>
+											<th>긴급도</th>
+											<th>출고일</th>
+											<th>재료명 / 갯수</th>
+										</tr>
+									</tfoot>
+								</table>
 							</div>
 							<!-- /.box-body -->
-							<div class="box-footer">
-							</div>
-							<!-- /.box-footer -->
 						</div>
 						<!-- /.box -->
 					</div>
