@@ -69,7 +69,7 @@ public class ManagementController {
 		ResponseEntity<String> entity = null;
 		try {
 			service.authoritySavePostMethod(vo);
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+			entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 		}
 		catch (Exception e) {
 			entity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -83,7 +83,7 @@ public class ManagementController {
 		ResponseEntity<MemberVo> entity = null;
 		try {
 			MemberVo list = service.infoPostMethod(userno);
-			entity = new ResponseEntity<MemberVo>(list, HttpStatus.OK);
+			entity = new ResponseEntity<>(list, HttpStatus.OK);
 		}
 		catch (Exception e) {
 			entity = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -97,7 +97,7 @@ public class ManagementController {
 		ResponseEntity<String> entity = null;
 		try {
 			service.deletePostMethod(userno);
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+			entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 		}
 		catch (Exception e) {
 			entity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

@@ -63,10 +63,14 @@ public class ChattingController {
 		logger.info("sendPostMethod Called!!!");
 		ResponseEntity<String> entity = null;
 		try {
+			if (vo.getChat().contains("<script>")) {
+				entity = new ResponseEntity<>("FAIL", HttpStatus.INTERNAL_SERVER_ERROR);
+				return entity;
+			}
 			service.sendPostMethod(vo);
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+			entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 		}
-		catch (Exception e) { entity = new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR); }
+		catch (Exception e) { entity = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); }
 		return entity;
 	}
 	

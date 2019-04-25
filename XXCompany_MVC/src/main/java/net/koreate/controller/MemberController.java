@@ -63,9 +63,14 @@ public class MemberController {
 		logger.info("registerCheckPostMethod Called!!!");
 		ResponseEntity<String> entity = null;
 		try {
+			if (username.contains("<script>")) {
+				System.out.println("ON");
+				entity = new ResponseEntity<>("FAIL", HttpStatus.OK);
+				return entity;
+			}
 			MemberVo vo = service.registerCheckPostMethod(username);
-			if (vo != null) entity = new ResponseEntity<String>("FAIL", HttpStatus.OK);
-			else			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+			if (vo != null) entity = new ResponseEntity<>("FAIL", HttpStatus.OK);
+			else			entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 		}
 		catch (Exception e) {
 			entity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

@@ -129,9 +129,9 @@ public class CompanyContoller {
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("perPageNum", cri.getPerPageNum());
 			rttr.addAttribute("type", session.getAttribute("type"));
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+			entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 		}
-		catch (Exception e) { entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR); }
+		catch (Exception e) { entity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR); }
 		return entity;
 	}
 	
@@ -158,9 +158,9 @@ public class CompanyContoller {
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("perPageNum", cri.getPerPageNum());
 			rttr.addAttribute("type", session.getAttribute("type"));
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+			entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 		}
-		catch (Exception e) { entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR); }
+		catch (Exception e) { entity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR); }
 		return entity;
 	}
 	
@@ -175,9 +175,9 @@ public class CompanyContoller {
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("perPageNum", cri.getPerPageNum());
 			rttr.addAttribute("type", session.getAttribute("type"));
-			entity = new ResponseEntity<CommentsVo>(COMMENT, HttpStatus.OK);
+			entity = new ResponseEntity<>(COMMENT, HttpStatus.OK);
 		}
-		catch (Exception e) { entity = new ResponseEntity<CommentsVo>(HttpStatus.BAD_REQUEST); }
+		catch (Exception e) { entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST); }
 		return entity;
 	}
 	
@@ -193,9 +193,9 @@ public class CompanyContoller {
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("perPageNum", cri.getPerPageNum());
 			rttr.addAttribute("type", session.getAttribute("type"));
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+			entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 		}
-		catch (Exception e) { entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR); }
+		catch (Exception e) { entity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR); }
 		return entity;
 	}
 	
