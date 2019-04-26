@@ -3,6 +3,7 @@ package net.koreate.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,11 +51,12 @@ public class WorkingController {
 	*/
 	
 	@GetMapping(value = "/order") // Spring Framework V4.3
-	public void orderGetMethod(@ModelAttribute("cri") Criteria cri, Model model) {
+	public void orderGetMethod(@ModelAttribute("cri") Criteria cri, HttpSession session, Model model) {
 		logger.info("orderGetMethod Called!!!");
 		List<OrderVo> orders = service.orderGetMethod();
 		PageMaker pageMaker = service.getPageMaker(cri);
 		model.addAttribute(pageMaker);
+		model.addAttribute("member", session.getAttribute("member"));
 		model.addAttribute("orders", orders);
 	}
 	
@@ -71,11 +73,12 @@ public class WorkingController {
 	}
 	
 	@GetMapping(value = "/materials") // Spring Framework V4.3
-	public void materialsGetMethod(@ModelAttribute("cri") Criteria cri, Model model) {
+	public void materialsGetMethod(@ModelAttribute("cri") Criteria cri, HttpSession session, Model model) {
 		logger.info("materialsGetMethod Called!!!");
 		List<OrderVo> materials = service.materialsGetMethod();
 		PageMaker pageMaker = service.getPageMaker(cri);
 		model.addAttribute(pageMaker);
+		model.addAttribute("member", session.getAttribute("member"));
 		model.addAttribute("materials", materials);
 	}
 	
@@ -92,11 +95,12 @@ public class WorkingController {
 	}
 	
 	@GetMapping(value = "/wearing") // Spring Framework V4.3
-	public void wearingGetMethod(@ModelAttribute("cri") Criteria cri, Model model) {
+	public void wearingGetMethod(@ModelAttribute("cri") Criteria cri, HttpSession session, Model model) {
 		logger.info("wearingGetMethod Called!!!");
 		List<OrderVo> wearings = service.wearingGetMethod();
 		PageMaker pageMaker = service.getPageMaker(cri);
 		model.addAttribute(pageMaker);
+		model.addAttribute("member", session.getAttribute("member"));
 		model.addAttribute("wearings", wearings);
 	}
 	
@@ -113,11 +117,12 @@ public class WorkingController {
 	}
 	
 	@GetMapping(value = "/release") // Spring Framework V4.3
-	public void releaseGetMethod(@ModelAttribute("cri") Criteria cri, Model model) {
+	public void releaseGetMethod(@ModelAttribute("cri") Criteria cri, HttpSession session, Model model) {
 		logger.info("releaseGetMethod Called!!!");
 		List<OrderVo> releases = service.releaseGetMethod();
 		PageMaker pageMaker = service.getPageMaker(cri);
 		model.addAttribute(pageMaker);
+		model.addAttribute("member", session.getAttribute("member"));
 		model.addAttribute("releases", releases);
 	}
 	

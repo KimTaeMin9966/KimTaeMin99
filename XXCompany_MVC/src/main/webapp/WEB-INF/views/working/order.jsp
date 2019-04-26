@@ -37,7 +37,9 @@
 							<div class="box-header">
 								<h3 class="box-title">
 									작업 지시서
+								<c:if test="${member.auth eq '사장' or member.auth eq '관계자'}">
 									<a href="/working/orderWrite" type="button" class="btn btn-default">작업지시 글 쓰기</a>
+								</c:if>
 								</h3>
 								<div class="box-tools">
 									<ul class="pagination pagination-sm no-margin pull-right">

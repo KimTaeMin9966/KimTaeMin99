@@ -35,7 +35,10 @@
 					<div class="col-xs-12">
 						<div class="box">
 							<div class="box-header">
-								<h3 class="box-title">입고 관리</h3>
+								<h3 class="box-title">
+									입고 관리
+									<a href="/working/wearingWrite" type="button" class="btn btn-default">입고 관리 글 쓰기</a>
+								</h3>
 								<div class="box-tools">
 									<ul class="pagination pagination-sm no-margin pull-right">
 									<c:if test="${pageMaker.prev}">

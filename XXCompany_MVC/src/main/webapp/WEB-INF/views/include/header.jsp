@@ -385,9 +385,7 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-						<c:if test="${member.auth eq '사장'}">
 							<li><a href="/working/order"><i class="fa fa-circle-o"></i> 작업 지시서</a></li>
-						</c:if>
 							<li><a href="/working/materials"><i class="fa fa-circle-o"></i> 자재 관리</a></li>
 							<li><a href="/working/wearing"><i class="fa fa-circle-o"></i> 입고 관리</a></li>
 							<li><a href="/working/release"><i class="fa fa-circle-o"></i> 출고 관리</a></li>

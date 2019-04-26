@@ -35,11 +35,11 @@
 								<table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th style="width: 21%">권한</th>
-											<th>이름</th>
-											<th>입사일</th>
-											<th style="width: 25%">오늘 작업량</th>
-											<th style="width: 17%">기타</th>
+											<th style="width: 10%">권한</th>
+											<th style="width: 15%">이름</th>
+											<th style="width: 13%">입사일</th>
+											<th style="width: 23%">오늘 작업량</th>
+											<th style="width: 15%">기타</th>
 										</tr>
 									</thead>
 									<tbody>
