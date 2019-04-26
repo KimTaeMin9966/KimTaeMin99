@@ -20,25 +20,29 @@ public class WorkingServiceImpl implements WorkingService {
 	@Override
 	public List<OrderVo> orderGetMethod() {
 		// TODO Auto-generated method stub
-		return dao.orderGetMethod();
+		String type = "order";
+		return dao.orderGetMethod(type);
 	}
 
 	@Override
 	public List<OrderVo> materialsGetMethod() {
 		// TODO Auto-generated method stub
-		return dao.materialsGetMethod();
+		String type = "materials";
+		return dao.materialsGetMethod(type);
 	}
 
 	@Override
 	public List<OrderVo> wearingGetMethod() {
 		// TODO Auto-generated method stub
-		return dao.wearingGetMethod();
+		String type = "wearing";
+		return dao.wearingGetMethod(type);
 	}
 
 	@Override
 	public List<OrderVo> releaseGetMethod() {
 		// TODO Auto-generated method stub
-		return dao.releaseGetMethod();
+		String type = "release";
+		return dao.releaseGetMethod(type);
 	}
 
 	@Override
