@@ -118,7 +118,8 @@
 							<div class="box-footer">
 								<div class="input-group">
 									<input type="hidden" name="writer" class="form-control" value="${member.username}">
-									<input id="chatting" type="text" name="message" placeholder="Type Message ..." class="form-control">
+									<input id="chatting" type="text" name="message" placeholder="Type Message ..."
+										onkeydown="keydown()" class="form-control">
 									<span class="input-group-btn">
 										<button type="button" onclick="ChattingSend('/chatting/send', 'post');"
 											class="btn btn-warning btn-flat">Send</button>
@@ -148,5 +149,10 @@
 					});
 				}, 15000);
 			});
+			function keydown() {
+				if (event.keyCode == 13) {
+					ChattingSend('/chatting/send', 'post');
+				}
+			}
 		</script>
 <%@ include file="../include/footer.jsp"%>
