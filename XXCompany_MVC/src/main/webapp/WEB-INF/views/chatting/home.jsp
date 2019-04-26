@@ -41,7 +41,7 @@
 							<!-- /.box-header -->
 							<div class="box-body">
 								<!-- Conversations are loaded here -->
-								<div class="direct-chat-messages">
+								<div id="scroll" class="direct-chat-messages">
 						<c:forEach var="chatting" items="${chattings}">
 							<c:choose>
 								<c:when test="${chatting.writer eq member.username}">
@@ -137,11 +137,13 @@
 		<!-- /.content-wrapper -->
 		<script type="text/javascript" id="chatting_loading_script">
 			$(document).ready(function() {
-				$('.direct-chat-messages').stop().animate({scrollTop: $('.direct-chat-messages').height()});
+				var height = ($('#scroll > .direct-chat-msg').height() + 10) * ($('#scroll > .direct-chat-msg').length + 2);
+				$('#scroll').stop().animate({scrollTop: height});
 				$('#chatting').focus();
 				setInterval(function() {
 					$('.box-body').load('/chatting/home .direct-chat-messages', function() {
-						$('.direct-chat-messages').scrollTop($('.direct-chat-messages').height());
+						height = ($('#scroll > .direct-chat-msg').height() + 10) * ($('#scroll > .direct-chat-msg').length + 2);
+						$('#scroll').scrollTop(height);
 						$('#chatting').focus();
 					});
 				}, 15000);

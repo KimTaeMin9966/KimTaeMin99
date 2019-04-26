@@ -83,9 +83,11 @@
 						               ${COMMENT.comments}
 						            </div>
 						            <div class="timeline-footer">
+						            <c:if test="${COMMENT.writer eq board.writer}">
 						                <button type="button" onclick="CommentGet('/company/CommentEdit', 'get', '${COMMENT.cno}');" class="btn btn-info" data-toggle="modal" data-target="#modal-info">
 											댓글 수정
 										</button>
+									</c:if>
 						            </div>
 						        </div>
 						    </li>

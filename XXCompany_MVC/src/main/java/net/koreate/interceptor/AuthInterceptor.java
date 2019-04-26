@@ -24,7 +24,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		session.setAttribute("dest", requestURI);
 
 		Object loginUser = session.getAttribute("member");
-
+		
 		if (loginUser == null) {
 			response.sendRedirect("/member/login");
 			return false;
@@ -32,7 +32,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			MemberVo user = (MemberVo) loginUser;
 			String username = user.getUsername();
 			String auth = service.getUserAuthByUsername(username);
-			
+
+			if (requestURI.equals("/chatting/home")) return true;
 			if (requestURI.equals("/working/orderWrite") && !(auth.equals("사장") || auth.equals("관계자"))) {
 				session.setAttribute("error", username + "님은 권한이 없어 작업 지시를 할수 없습니다.");
 				response.sendRedirect("/working/order");

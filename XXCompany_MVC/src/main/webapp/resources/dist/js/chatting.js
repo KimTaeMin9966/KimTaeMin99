@@ -17,7 +17,10 @@ function ChattingSend(url, action) {
 		dataType : "text",
 		data : JSON.stringify(datas),
 		success : function(result) {
-			window.location.reload();
+			var height = ($('#scroll > .direct-chat-msg').height() + 10) * ($('#scroll > .direct-chat-msg').length + 2);
+			$('input[name=message]').val('');
+			$('#scroll').scrollTop(height);
+			$('#chatting').focus();
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
