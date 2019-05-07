@@ -65,7 +65,7 @@ public class BookManagement {
 	// 도서 등록
 	public void registerBook() {
 		System.out.println("1. 도서등록");
-		String sql = "INSERT INTO book VALUES(bno_auto.nextval, ?, ?)";
+		String sql = "INSERT INTO book VALUES(bno_auto.nextval, ?, ?, sysdate)";
 		String title = getData("등록할 도서의 제목을 입력해주세요 > ");
 		String author = getData("등록할 도서의 저자를 입력해주세요 > ");
 		
@@ -88,9 +88,10 @@ public class BookManagement {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				System.out.print("bno : " + rs.getInt(1));
+				System.out.print("num : " + rs.getInt(1));
 				System.out.print("\t title : " + rs.getString(2));
-				System.out.println("\t author : " + rs.getString(3));
+				System.out.print("\t author : " + rs.getString(3));
+				System.out.println("\t regdate : " + rs.getDate(4));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -103,7 +104,7 @@ public class BookManagement {
 		int bookNum = getSelectNum("수정하실 책의 관리번호를 입력하세요>");
 
 		try {
-			pstmt = conn.prepareStatement("SELECT * FROM book WHERE bno = ?");
+			pstmt = conn.prepareStatement("SELECT * FROM book WHERE num = ?");
 			pstmt.setInt(1, bookNum);
 			rs = pstmt.executeQuery();
 
@@ -119,7 +120,7 @@ public class BookManagement {
 
 					switch (selectNo) {
 					case 1:
-						String title_sql = "UPDATE book SET title = ? WHERE bno = ?";
+						String title_sql = "UPDATE book SET title = ? WHERE num = ?";
 						System.out.println("제목수정");
 						String title = getData("제목입력 > ");
 						try {
@@ -134,7 +135,7 @@ public class BookManagement {
 						}
 						break;
 					case 2:
-						String author_sql = "UPDATE book SET author = ? WHERE bno = ?";
+						String author_sql = "UPDATE book SET author = ? WHERE num = ?";
 						System.out.println("저자 수정");
 						String author = getData("저자 입력 > ");
 						try {
@@ -168,12 +169,12 @@ public class BookManagement {
 
 	// 도서 목록에서 책 정보 삭제
 	public void deleteBook() {
-		String sql = "DELETE FROM book WHERE bno = ?";
+		String sql = "DELETE FROM book WHERE num = ?";
 		System.out.println("4. 도서삭제");
 		int bookNum = getSelectNum("삭제할 도서의 관리번호를 입력해주세요.");
 
 		try {
-			pstmt = conn.prepareStatement("SELECT * FROM book WHERE bno = ?");
+			pstmt = conn.prepareStatement("SELECT * FROM book WHERE num = ?");
 			pstmt.setInt(1, bookNum);
 			rs = pstmt.executeQuery();
 

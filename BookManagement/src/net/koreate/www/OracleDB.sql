@@ -1,0 +1,14 @@
+SELECT * FROM tab;
+
+CREATE TABLE book (
+	bno number(1),
+	title VARCHAR(50),
+	author VARCHAR(50),
+	regdate DATE
+);
+
+CREATE SEQUENCE bno_auto MINVALUE 0 INCREMENT BY 1 START WITH 1;
+
+ALTER SEQUENCE bno_auto MINVALUE 0 INCREMENT BY -1;
+ALTER SEQUENCE bno_auto MINVALUE 0 INCREMENT BY 1;
+SELECT bno_auto.nextval FROM dual;
