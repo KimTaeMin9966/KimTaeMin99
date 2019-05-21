@@ -18,7 +18,7 @@ public class Cookies {
 		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
 			for(Cookie cookie : cookies) {
-				cookieMap.put(cookie.getName(),cookie);
+				cookieMap.put(cookie.getName(), cookie);
 			}
 		}
 	}
@@ -44,15 +44,13 @@ public class Cookies {
 	 * @param response
 	 */
 	public void removeCookie(String name, HttpServletRequest request, HttpServletResponse response) {
-		Cookie[] cookies = request.getCookies();
+		Cookie cookies = cookieMap.get(name);
 		if (cookies != null) {
-			for (int i = 0; i < cookies.length; i++) {
-				Cookie cookie = new Cookie(name, "");
-				cookie.setPath("/");
-				cookie.setMaxAge(0);
-				response.addCookie(cookie);
-				cookieMap.remove(name);
-			}
+			Cookie cookie = new Cookie(name, "");
+			cookie.setPath("/");
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
+			cookieMap.remove(name);
 		}
 	}
 	
