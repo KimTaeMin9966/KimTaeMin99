@@ -8,6 +8,7 @@
 		for (Cookie cookie : cookies) {
 			if (cookie.getName().equals("memberID")) {
 				session.setAttribute("loginMember", joinMember);
+				break;
 			}
 		}
 	}

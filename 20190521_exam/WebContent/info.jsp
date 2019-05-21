@@ -1,27 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="vo.MemberVo"%>
-<% MemberVo m = (MemberVo) session.getAttribute("loginMember"); %>
+<jsp:useBean id="joinMember" class="vo.MemberVo" scope="application"/>
 	<table class="info">
 		<tr>
 			<td>아이디</td>
-			<td><%= m.getId() %></td>
+			<td><jsp:getProperty property="id" name="joinMember"/></td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><%= m.getPass() %></td>
+			<td><jsp:getProperty property="pass" name="joinMember"/></td>
 		</tr>
 		<tr>
 			<td>이름</td>
-			<td><%= m.getName()%></td>
+			<td><jsp:getProperty property="name" name="joinMember"/></td>
 		</tr>
 		<tr>
 			<td>주소</td>
-			<td><%=m.getAddr() %></td>
+			<td><jsp:getProperty property="addr" name="joinMember"/></td>
 		</tr>
 		<tr>
 			<td>전화번호</td>
-			<td><%= m.getPhone() %></td>
+			<td><jsp:getProperty property="phone" name="joinMember"/></td>
 		</tr>
 		<tr>
 			<td colspan=2><input type="button" value="메인" onclick="location.href='index.jsp'"/></td>

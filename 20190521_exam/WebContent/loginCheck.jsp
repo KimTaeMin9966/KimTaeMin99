@@ -16,15 +16,9 @@
 			cookie.setMaxAge(60 * 60 * 24 * 30);
 			response.addCookie(cookie);
 		}
-		out.print("<script>");
-		out.print("alert('로그인 성공');");
-		out.print("location.href='index.jsp';");
-		out.print("</script>");
+		out.print("<script>alert('로그인 성공'); location.href='index.jsp'</script>");
 	} else {
-		out.print("<script>");
-		out.print("alert('로그인 실패');");
-		out.print("location.href='login.jsp';");
-		out.print("</script>");
+		out.print("<script>alert('로그인 실패'); location.href='index.jsp?page=login'</script>");
 	}
 %>
 

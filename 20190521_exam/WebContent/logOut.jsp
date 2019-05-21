@@ -8,6 +8,7 @@
 				Cookie c = new Cookie("memberID", "");
 				c.setMaxAge(0);
 				response.addCookie(c);
+				break;
 			}
 		}
 	}
