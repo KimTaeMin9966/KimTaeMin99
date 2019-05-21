@@ -15,7 +15,7 @@
     		</tr>
     		<tr>
     			<td colspan=2>
-    				<input type="checkbox" id="login" name="login" value="login"/>
+    				<input type="checkbox" id="login" name="login"/>
     				<label for="login">로그인 상태 유지</label>
    				</td>
     		</tr>
