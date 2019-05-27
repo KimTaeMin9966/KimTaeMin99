@@ -19,13 +19,15 @@ public class JdbcUtil {
 	public static Connection getConnection() {
 		Connection conn = null;
 		
-		try {
-			Context init = new InitialContext();
-			DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
-			conn = ds.getConnection();
+		if (conn == null) {
+			try {
+				Context init = new InitialContext();
+				DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+				conn = ds.getConnection();
+			}
+			catch (NamingException e) { e.printStackTrace(); }
+			catch (SQLException e) { e.printStackTrace(); }
 		}
-		catch (NamingException e) { e.printStackTrace(); }
-		catch (SQLException e) { e.printStackTrace(); }
 		return conn;
 	}
 	

@@ -22,12 +22,7 @@
 				}
 			</script>
 			
-			<%
-				String error = (String) session.getAttribute("error");
-				if (error != null) {
-					session.removeAttribute("error");
-				}
-			%>
+			<c:remove var="error"/>
 			
 			<!-- Main content -->
 			<section class="content">
