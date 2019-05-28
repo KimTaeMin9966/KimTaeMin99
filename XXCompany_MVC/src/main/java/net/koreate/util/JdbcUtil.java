@@ -1,8 +1,6 @@
 package net.koreate.util;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.naming.Context;
@@ -32,47 +30,11 @@ public class JdbcUtil {
 	}
 	
 	/**
-	 * Connection 객체를 넘겨 받아 연결을 종료한다
-	 * @param conn
+	 * AutoCloseable 객체를 넘겨 받아 연결을 종료한다
+	 * @param closeable
 	 */
-	public static void close(Connection conn) {
-		try { if(conn != null) { conn.close(); } }
-		catch (SQLException e) { e.printStackTrace(); }
-	}
-	
-	/**
-	 * Connection 객체를 넘겨 받아 DB에 커밋을 날린다
-	 * @param conn
-	 */
-	public static void commit(Connection conn) {
-		try { conn.commit(); }
-		catch (SQLException e) { e.printStackTrace(); }
-	}
-	
-	/**
-	 * Connection 객체를 넘겨 받아 DB에 롤백을 날린다
-	 * @param conn
-	 */
-	public static void rollback(Connection conn) {
-		try { conn.rollback(); }
-		catch (SQLException e) { e.printStackTrace(); }
-	}
-	
-	/**
-	 * PreparedStatement 객체를 넘겨 받아 연결을 종료한다
-	 * @param pstmt
-	 */
-	public static void close(PreparedStatement pstmt) {
-		try { if(pstmt != null) { pstmt.close(); } }
-		catch (SQLException e) { e.printStackTrace(); }
-	}
-	
-	/**
-	 * ResultSet 객체를 넘겨 받아 연결을 종료한다
-	 * @param rs
-	 */
-	public static void close(ResultSet rs) {
-		try { if(rs != null) { rs.close(); } }
-		catch (SQLException e) { e.printStackTrace(); }
+	public static void close(AutoCloseable closeable) {
+		try { if(closeable != null) { closeable.close(); } }
+		catch (Exception e) { e.printStackTrace(); }
 	}
 }
