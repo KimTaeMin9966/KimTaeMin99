@@ -7,9 +7,12 @@
 /BoardSample_MVC/src/main/webapp/WEB-INF/properties/
 /XXCompany_MVC/target/
 /XXCompany_MVC/src/main/webapp/WEB-INF/properties/
+/XXCompany_MVC2/target/
+/XXCompany_MVC2/src/main/webapp/WEB-INF/properties/
 /Servers/
 
 *.zip
+*.7z
 /boot0[0-9]/
 /Sample/
 /Security_Sample/
