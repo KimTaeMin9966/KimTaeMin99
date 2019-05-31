@@ -4,10 +4,17 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="memberVo" type="net.koreate.vo.MemberVo" />
+		<typeAlias alias="mbvo" type="net.koreate.vo.MemberVo" />
+		<typeAlias alias="bdvo" type="net.koreate.vo.BoardVo" />
+		<typeAlias alias="cmvo" type="net.koreate.vo.CommentsVo" />
+		<typeAlias alias="odvo" type="net.koreate.vo.OrderVo" />
+		<typeAlias alias="chvo" type="net.koreate.vo.ChattingVo" />
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="sql/memberMapper.xml" />
+		<mapper resource="sql/boardMapper.xml" />
+		<mapper resource="sql/workingMapper.xml" />
+		<mapper resource="sql/chatingMapper.xml" />
 	</mappers>
 </configuration>

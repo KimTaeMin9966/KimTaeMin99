@@ -5,19 +5,26 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1><c:out value="${title}" /> <small>홈페이지에 오시걸 환영합니다.</small></h1>
+				<h1>${homePage_title} <small>홈페이지에 오시걸 환영합니다.</small></h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li class="active"><c:out value="${title}" /></li>
+					<li class="active">${homePage_title}</li>
 				</ol>
 			</section>
 			
-			<c:if test="${!empty error}">
-				<script type="text/javascript">
-					alert('${error}');
-				</script>
-				<c:remove var="error"/>
-			</c:if>
+			<script type="text/javascript">
+				var message = '${error}';
+				if (message != null && message != '') {
+					alert(message);
+				}
+			</script>
+			
+			<%
+				String error = (String) session.getAttribute("error");
+				if (error != null) {
+					session.removeAttribute("error");
+				}
+			%>
 			
 			<!-- Main content -->
 			<section class="content">
@@ -25,7 +32,7 @@
 					<div class="col-xs-12">
 						<div class="box">
 							<div class="box-header">
-								<h3 class="box-title"><c:out value="${title}" /> <small>홈페이지에 오시걸 환영합니다.</small></h3>
+								<h3 class="box-title">${homePage_title} <small>홈페이지에 오시걸 환영합니다.</small></h3>
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body no-padding">

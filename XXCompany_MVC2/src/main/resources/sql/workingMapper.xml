@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.koreate.dao.WorkingDao">
+	<select id="orderGetMethod" resultType="odvo">
+		SELECT * FROM XXCompany_Orders WHERE type=#{type}
+	</select>
+	<select id="materialsGetMethod" resultType="odvo">
+		SELECT * FROM XXCompany_Orders WHERE type=#{type}
+	</select>
+	<select id="wearingGetMethod" resultType="odvo">
+		SELECT * FROM XXCompany_Orders WHERE type=#{type}
+	</select>
+	<select id="releaseGetMethod" resultType="odvo">
+		SELECT * FROM XXCompany_Orders WHERE type=#{type}
+	</select>
+	<select id="ordersCount" resultType="int">
+		SELECT COUNT(*) FROM XXCompany_Orders
+	</select>
+	<insert id="orderWritePostMethod">
+		INSERT INTO XXCompany_Orders(type, writer, urgency, delivery, content)
+		VALUES(#{type}, #{writer}, #{urgency}, #{delivery}, #{content})
+	</insert>
+	<insert id="materialsWritePostMethod">
+		INSERT INTO XXCompany_Orders(type, writer, in_day, content, counting)
+		VALUES(#{type}, #{writer}, #{in_day}, #{content}, #{counting})
+	</insert>
+	<insert id="wearingWritePostMethod">
+		INSERT INTO XXCompany_Orders(type, writer, in_day, content, counting)
+		VALUES(#{type}, #{writer}, #{in_day}, #{content}, #{counting})
+	</insert>
+	<insert id="releaseWritePostMethod">
+		INSERT INTO XXCompany_Orders(type, writer, out_day, content, counting)
+		VALUES(#{type}, #{writer}, #{out_day}, #{content}, #{counting})
+	</insert>
+</mapper>

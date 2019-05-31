@@ -1,39 +1,47 @@
 package net.koreate.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
-@Controller
+@Controller // Spring Framework V2.5
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	/*
+	@GetMapping(value = "/") // Spring Framework V4.3
+	public void GetMethod() {
+		logger.info("GetMethod Called!!!");
+	}
+
+	@PostMapping(value = "/") // Spring Framework V4.3
+	public void PostMethod() {
+		logger.info("PostMethod Called!!!");
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET) // Spring Framework V2.5
+	public void GetMethod() {
+		logger.info("GetMethod Called!!!");
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.POST) // Spring Framework V2.5
+	public void PostMethod() {
+		logger.info("PostMethod Called!!!");
+	}
+	*/
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET) // Spring Framework V2.5
+	public String home(Locale locale, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		model.addAttribute("title", "(주)태성전자" );
-		
+		session.setAttribute("language", locale);
+		session.setAttribute("homePage_title", "(주)태성전자");
 		return "home";
 	}
 	
