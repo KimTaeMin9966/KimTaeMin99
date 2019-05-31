@@ -5,7 +5,7 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>${homePage_title} <small>채팅방에 오시걸 환영합니다.</small>
+				<h1>${title} <small>채팅방에 오시걸 환영합니다.</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

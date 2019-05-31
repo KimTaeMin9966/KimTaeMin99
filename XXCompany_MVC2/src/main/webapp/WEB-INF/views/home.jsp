@@ -5,10 +5,10 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>${homePage_title} <small>홈페이지에 오시걸 환영합니다.</small></h1>
+				<h1>${title} <small>홈페이지에 오시걸 환영합니다.</small></h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li class="active">${homePage_title}</li>
+					<li class="active">${title}</li>
 				</ol>
 			</section>
 			
@@ -32,7 +32,7 @@
 					<div class="col-xs-12">
 						<div class="box">
 							<div class="box-header">
-								<h3 class="box-title">${homePage_title} <small>홈페이지에 오시걸 환영합니다.</small></h3>
+								<h3 class="box-title">${title} <small>홈페이지에 오시걸 환영합니다.</small></h3>
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body no-padding">

@@ -6,11 +6,11 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					${homePage_title} <small>관리홈페이지에 오시걸 환영합니다.</small>
+					${title} <small>관리홈페이지에 오시걸 환영합니다.</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li class="active">${homePage_title} 관리 페이지</li>
+					<li class="active">${title} 관리 페이지</li>
 				</ol>
 			</section>
 		

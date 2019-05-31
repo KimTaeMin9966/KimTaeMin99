@@ -41,7 +41,7 @@ public class HomeController {
 	public String home(Locale locale, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		session.setAttribute("language", locale);
-		session.setAttribute("homePage_title", "(주)태성전자");
+		session.setAttribute("title", "(주)태성전자");
 		return "home";
 	}
 	
