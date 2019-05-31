@@ -3,7 +3,6 @@ package net.koreate.controller;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,15 +51,10 @@ public class ManagementController {
 	*/
 	
 	@GetMapping(value = "/member") // Spring Framework V4.3
-	public void HomeGetMethod(HttpSession session, Model model) {
+	public void HomeGetMethod(Model model) {
 		logger.info("HomeGetMethod Called!!!");
-		MemberVo LoginUser = (MemberVo) session.getAttribute("member");
-		
-		List<MemberVo> members = service.membersGetMethod();
+		List<MemberVo> members = service.getMemberLists();
 		model.addAttribute("members", members);
-		
-		MemberVo sessionUpdate = service.sessionUpdateMethod(LoginUser);
-		session.setAttribute("member", sessionUpdate);
 	}
 	
 	@PostMapping(value = "/authoritySave") // Spring Framework V4.3
@@ -68,7 +62,7 @@ public class ManagementController {
 		logger.info("authoritySavePostMethod Called!!!");
 		ResponseEntity<String> entity = null;
 		try {
-			service.authoritySavePostMethod(vo);
+			service.authoritySave(vo);
 			entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 		}
 		catch (Exception e) {
@@ -78,11 +72,11 @@ public class ManagementController {
 	}
 	
 	@PostMapping(value = "/info") // Spring Framework V4.3
-	public ResponseEntity<MemberVo> infoPostMethod(@RequestParam("userID") int userno) {
+	public ResponseEntity<MemberVo> infoPostMethod(@RequestParam("userid") int userid) {
 		logger.info("infoPostMethod Called!!!");
 		ResponseEntity<MemberVo> entity = null;
 		try {
-			MemberVo list = service.infoPostMethod(userno);
+			MemberVo list = service.getUserInfoById(userid);
 			entity = new ResponseEntity<>(list, HttpStatus.OK);
 		}
 		catch (Exception e) {
@@ -92,11 +86,11 @@ public class ManagementController {
 	}
 	
 	@PostMapping(value = "/delete") // Spring Framework V4.3
-	public ResponseEntity<String> deletePostMethod(@RequestParam("userID") int userno) {
+	public ResponseEntity<String> deletePostMethod(@RequestParam("userid") int userid) {
 		logger.info("deletePostMethod Called!!!");
 		ResponseEntity<String> entity = null;
 		try {
-			service.deletePostMethod(userno);
+			service.memberDeleteById(userid);
 			entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 		}
 		catch (Exception e) {

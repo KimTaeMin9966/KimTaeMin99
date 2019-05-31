@@ -4,49 +4,61 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="net.koreate.dao.MemberDao">
-	<select id="regBefor" resultType="mbvo">
-		SELECT * FROM XXCompany_Member WHERE username = #{username} AND isOut = 0
+	<resultMap type="memberVo" id="memberMap">
+		<id property="userid" column="userid" />
+		<result property="userid" column="userid" />
+		<result property="userpw" column="userpw" />
+		<result property="userName" column="userName" />
+		<result property="regDate" column="regDate" />
+		<result property="updateDate" column="updateDate" />
+		<collection property="authList" resultMap="authMap" />
+	</resultMap>
+	<resultMap type="authVo" id="authMap">
+		<result property="userid" column="userid" />
+		<result property="auth" column="auth" />
+	</resultMap>
+	<select id="read" resultMap="memberMap">
+		SELECT mem.userid, userpw, username, enabled, regdate, updatedate, auth FROM XXCompany_Member mem
+		LEFT OUTER JOIN XXCompany_Member_Auth auth on mem.userid = auth.userid
+		WHERE mem.userid = #{userid} AND enabled = 1
 	</select>
-	<select id="registerCheckPostMethod" resultType="mbvo">
-		SELECT * FROM XXCompany_Member WHERE username = #{username}
+	<select id="joinIdCheck" resultType="memberVo">
+		SELECT * FROM XXCompany_Member WHERE userid = #{userid}
 	</select>
-	<select id="getPasswordHashByDto" resultType="String">
-		SELECT password FROM XXCompany_Member
-		WHERE joindate = #{joindate} AND username = #{username} AND isOut = 0
-	</select>
-	<insert id="registerPostMethod">
-		INSERT INTO XXCompany_Member(username, joindate, password)
-		VALUES (#{username}, #{joindate}, #{password})
+	<insert id="join">
+		INSERT INTO XXCompany_Member(userid, userpw, username)
+		VALUES (#{userid}, #{userpw}, #{userName})
 	</insert>
-	<update id="registerUpdatePostMethod">
-		UPDATE XXCompany_Member SET password = #{password}, joindate = #{joindate}, isOut = 0
-		WHERE username = #{username}
+	<insert id="joinToAuth">
+		INSERT INTO XXCompany_Member_Auth(userid, auth)
+		VALUES (#{userid}, #{auth})
+	</insert>
+	<update id="memberUpdate">
+		UPDATE XXCompany_Member SET password = #{password}, updatedate = #{updateDate}, enabled = 1
+		WHERE userid = #{userid}
 	</update>
-	<select id="Login" resultType="mbvo">
-		SELECT * FROM XXCompany_Member
-		WHERE username = #{username} AND joindate = #{joindate} AND password = #{password} AND isOut = 0
-	</select>
-	<select id="profilesGetMethod" resultType="mbvo">
-		SELECT * FROM XXCompany_Member WHERE username = #{username} AND isOut = 0
-	</select>
-	<update id="authoritySavePostMethod">
+	<update id="memberUpdateToAuth">
 		UPDATE XXCompany_Member SET auth = #{auth}
-		WHERE userno = #{userno} AND isOut = 0
+		WHERE userid = #{userid} AND enabled = 1
 	</update>
-	<select id="sessionUpdateMethod" resultType="mbvo">
-		SELECT * FROM XXCompany_Member WHERE userno = #{userno} AND isOut = 0
+	<select id="getProfilesByUserId" resultType="memberVo">
+		SELECT * FROM XXCompany_Member WHERE userid = #{userid} AND enabled = 1
 	</select>
-	<select id="membersGetMethod" resultType="mbvo">
-		SELECT * FROM XXCompany_Member WHERE isOut = 0
+	<select id="getMemberLists" resultType="memberVo">
+		SELECT * FROM XXCompany_Member WHERE enabled = 1
 	</select>
-	<select id="infoPostMethod" resultType="mbvo">
-		SELECT * FROM XXCompany_Member WHERE userno = #{userno} AND isOut = 0
-	</select>
-	<update id="deletePostMethod">
-		UPDATE XXCompany_Member SET isOut = 1
-		WHERE userno = #{userno}
+	<update id="authoritySave">
+		UPDATE XXCompany_Member_Auth SET auth = #{auth}
+		WHERE userid = #{userid} AND enabled = 1
 	</update>
-	<select id="getUserAuthByUsername" resultType="String">
-		SELECT auth FROM XXCompany_Member WHERE username = #{username} AND isOut = 0
+	<select id="getUserInfoById" resultType="memberVo">
+		SELECT * FROM XXCompany_Member WHERE userid = #{userid} AND enabled = 1
+	</select>
+	<update id="memberDeleteById">
+		UPDATE XXCompany_Member SET enabled = 0
+		WHERE userid = #{userid}
+	</update>
+	<select id="getUserAuthByUserid" resultType="authVo">
+		SELECT * FROM XXCompany_Member_Auth WHERE userid = #{userid} AND enabled = 1
 	</select>
 </mapper>

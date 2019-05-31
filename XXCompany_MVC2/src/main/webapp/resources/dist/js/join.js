@@ -22,7 +22,7 @@
 
 $(document).ready(function() {
 	// 페이지 로드후 바로 아이디 입력창으로 포커스를 준다
-	$('#username').focus();
+	$('#userid').focus();
 	
 	// 하이픈 없이 0 ~ 9까지 4자, 0 ~ 9까지 2자, 0 ~ 9까지 2자
 	var regexJoindate = /^[0-9]{4}[0-9]{2}[0-9]{2}$/;
@@ -57,17 +57,18 @@ $(document).ready(function() {
 	// ---------------------------------------------------------
 	
 	$("#dbCheck").on("click", function() {
-		var username = $("#username").val();
+		var userid = $('#userid').val();
+		var _csrf = $('#_csrf').val();
 		
-		if (username != '' && username != null) {
+		if (userid != '' && userid != null) {
 			$.ajax({
 				type : 'POST',
-				url : '/member/registerCheck',
+				url : '/member/joinIdCheck',
 				dataType : "text",
-				data : { username : username },
+				data : { userid : userid, _csrf : _csrf },
 				success : function(result) {
-					if (result == "SUCCESS") { showSuccessMessage('username_result', username + '님 반갑습니다.'); $('#username').attr('readonly', ''); boolAdmID = true; }
-					else { showErroMessage('username_result', username + '의 이름은 이미 가입되어 있습니다.'); $("#username").val(""); $('#username').focus(); }
+					if (result == "SUCCESS") { showSuccessMessage('userid_result', userid + '님 반갑습니다.'); $('#userid').attr('readonly', ''); boolAdmID = true; }
+					else { showErroMessage('userid_result', userid + '의 이름은 이미 가입되어 있습니다.'); $("#userid").val(""); $('#userid').focus(); }
 					boolAdmID = true;
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -75,38 +76,29 @@ $(document).ready(function() {
 				}
 			});
 		} else {
-			alert("이름(아이디)은 공백이 될수 없습니다."); $('#username').focus();
+			alert('아이디은 공백이 될수 없습니다.'); $('#userid').focus();
 			return;
 		}
 	});
 	
-	$("#joindate").on("input", function() {
-		var mwpw = $("#joindate").val();
-
-		var message = "올바른 형식이 아닙니다.";
-		var booleanGet = checkReg('joindate_result', mwpw, regexJoindate, message);
-		boolAdmJoindate = booleanGet;
-	});
-	
-	$("#password1").on("input", function() {
-		var mwpw = $("#password1").val();
+	$("#userpw").on("input", function() {
+		var userpw = $("#userpw").val();
 
 		var message = "올바른 비밀번호 형식이 아닙니다.";
-		var booleanGet = checkReg('password1_result', mwpw, regexPass, message);
+		var booleanGet = checkReg('userpw_result', userpw, regexPass, message);
 		boolAdmPass = booleanGet;
 	});
 	
-	$("#password2").on("input", function() {
-		var mwpw = $("#password1").val();
-		var mwpw2 = $("#password2").val();
+	$("#userpw2").on("input", function() {
+		var userpw = $("#userpw").val();
+		var userpw2 = $("#userpw2").val();
 
-		if(boolAdmPass && (mwpw === mwpw2)) { showSuccessMessage('password2_result', "비밀번호가 일치합니다."); }
-		else { showErroMessage('password2_result', "비밀번호가 일치하지 않습니다."); }
+		if(boolAdmPass && (userpw === userpw2)) { showSuccessMessage('userpw2_result', "비밀번호가 일치합니다."); }
+		else { showErroMessage('userpw2_result', "비밀번호가 일치하지 않습니다."); }
 	});
 	
 	$('#CLICK').click(function() {
-		if (!boolAdmID) { alert('이름(아이디)을 확인해주세요'); $('#username').focus(); }
-		else if (!boolAdmJoindate) { alert('입사일 확인해주세요'); $('#joindate').focus(); }
+		if (!boolAdmID) { alert('아이디을 확인해주세요'); $('#userid').focus(); }
 		else if (!boolAdmPass) { alert('비밀번호를 확인해주세요'); $('#password1').focus(); }
 		else { $('#registerFROM').submit(); }
 	});

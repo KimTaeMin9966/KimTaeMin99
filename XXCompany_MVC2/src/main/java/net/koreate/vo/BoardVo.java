@@ -1,6 +1,5 @@
 package net.koreate.vo;
 
-import java.util.Arrays;
 import java.util.Date;
 
 public class BoardVo {
@@ -12,10 +11,9 @@ public class BoardVo {
 	private int origin;
 	private int depth;
 	private int seq;
-	private Date regdate;
-	private Date updatedate;
-	private int viewcnt;
-	private String[] files;
+	private Date regDate;
+	private Date updateDate;
+	private int viewCnt;
 	private int commentCnt;
 	private int uno;
 
@@ -83,36 +81,28 @@ public class BoardVo {
 		this.seq = seq;
 	}
 
-	public Date getRegdate() {
-		return regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 
-	public Date getUpdatedate() {
-		return updatedate;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
-	public int getViewcnt() {
-		return viewcnt;
+	public int getViewCnt() {
+		return viewCnt;
 	}
 
-	public void setViewcnt(int viewcnt) {
-		this.viewcnt = viewcnt;
-	}
-
-	public String[] getFiles() {
-		return files;
-	}
-
-	public void setFiles(String[] files) {
-		this.files = files;
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
 	}
 
 	public int getCommentCnt() {
@@ -134,9 +124,9 @@ public class BoardVo {
 	@Override
 	public String toString() {
 		return "BoardVo [bno=" + bno + ", types=" + types + ", title=" + title + ", content=" + content + ", writer="
-				+ writer + ", origin=" + origin + ", depth=" + depth + ", seq=" + seq + ", regdate=" + regdate
-				+ ", updatedate=" + updatedate + ", viewcnt=" + viewcnt + ", files=" + Arrays.toString(files)
-				+ ", commentCnt=" + commentCnt + ", uno=" + uno + "]";
+				+ writer + ", origin=" + origin + ", depth=" + depth + ", seq=" + seq + ", regDate=" + regDate
+				+ ", updateDate=" + updateDate + ", viewCnt=" + viewCnt + ", commentCnt=" + commentCnt + ", uno=" + uno
+				+ "]";
 	}
 
 }

@@ -6,7 +6,7 @@ public class ChattingVo {
 	private int cno;
 	private String writer;
 	private String chat;
-	private Date regdate;
+	private Date regDate;
 
 	public int getCno() {
 		return cno;
@@ -32,17 +32,17 @@ public class ChattingVo {
 		this.chat = chat;
 	}
 
-	public Date getRegdate() {
-		return regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 
 	@Override
 	public String toString() {
-		return "ChattingVo [cno=" + cno + ", writer=" + writer + ", chat=" + chat + ", regdate=" + regdate + "]";
+		return "ChattingVo [cno=" + cno + ", writer=" + writer + ", chat=" + chat + ", regDate=" + regDate + "]";
 	}
 
 }

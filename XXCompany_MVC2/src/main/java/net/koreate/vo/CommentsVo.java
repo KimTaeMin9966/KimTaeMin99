@@ -7,8 +7,8 @@ public class CommentsVo {
 	private int cno;
 	private String comments;
 	private String writer;
-	private Date regdate;
-	private Date updatedate;
+	private Date regDate;
+	private Date updateDate;
 
 	public int getBno() {
 		return bno;
@@ -17,7 +17,7 @@ public class CommentsVo {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
-	
+
 	public int getCno() {
 		return cno;
 	}
@@ -42,26 +42,26 @@ public class CommentsVo {
 		this.writer = writer;
 	}
 
-	public Date getRegdate() {
-		return regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 
-	public Date getUpdatedate() {
-		return updatedate;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	@Override
 	public String toString() {
-		return "CommentsVo [bno=" + bno + ", comments=" + comments + ", writer=" + writer + ", regdate=" + regdate
-				+ ", updatedate=" + updatedate + "]";
+		return "CommentsVo [bno=" + bno + ", cno=" + cno + ", comments=" + comments + ", writer=" + writer
+				+ ", regDate=" + regDate + ", updateDate=" + updateDate + "]";
 	}
 
 }

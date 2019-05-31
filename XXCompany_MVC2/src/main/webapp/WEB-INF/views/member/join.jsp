@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="/resources/dist/css/AdminLTE.min.css?version=2">
 	<!-- iCheck -->
 	<link rel="stylesheet" href="/resources/plugins/iCheck/square/blue.css?version=2">
-	<script charset="utf-8" type="text/javascript" src="/resources/dist/js/register.js"></script>
+	<script charset="utf-8" type="text/javascript" src="/resources/dist/js/join.js"></script>
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,17 +47,13 @@
 		
 		<div class="register-box-body">
 			<p class="login-box-msg">Register a new membership</p>
-			<form id="registerFROM" action="/member/registerPost" method="post">
+			<form id="registerFROM" method="post">
+				<input type="hidden" id="${_csrf.parameterName}" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<div class="form-group has-feedback">
-					<input type="text" id="username" name="username" class="form-control" placeholder="이름(아이디)">
+					<input type="text" id="userid" name="userid" class="form-control" placeholder="id Enter...">
 					<span class="glyphicon glyphicon-user form-control-feedback"></span>
 					<input type="button" id="dbCheck" class="btn btn-primary btn-block btn-flat" value="중복체크" />
-					<div id="username_result" class="form-control"></div>
-				</div>
-				<div class="form-group has-feedback">
-					<input type="text" id="joindate" name="joindate" class="form-control" placeholder="입사일">
-					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-					<div id="joindate_result" class="form-control"></div>
+					<div id="userid_result" class="form-control"></div>
 				</div>
 				<div class="form-group has-feedback">
 					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info">
@@ -65,14 +61,19 @@
 					</button>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="password" id="password1" name="password1" class="form-control" placeholder="Password">
+					<input type="password" id="userpw" name="userpw" class="form-control" placeholder="Password Enter...">
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-					<div id="password1_result" class="form-control"></div>
+					<div id="userpw_result" class="form-control"></div>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="password" id="password2" name="password2" class="form-control" placeholder="Retype password">
-					<span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-					<div id="password2_result" class="form-control"></div>
+					<input type="password" id="userpw2" class="form-control" placeholder="Password Enter...">
+					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+					<div id="userpw2_result" class="form-control"></div>
+				</div>
+				<div class="form-group has-feedback">
+					<input type="text" id="userName" name="userName" class="form-control" placeholder="userName Enter...">
+					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+					<div id="username_result" class="form-control"></div>
 				</div>
 				<div class="row">
 					<div class="col-xs-4">

@@ -1,100 +1,75 @@
 package net.koreate.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class MemberVo {
-	private int userno;
-	private String username;
-	private String auth;
-	private String joindate;
-	private String password;
-	private String password1;
-	private String password2;
-	private boolean isOut;
-	private Date regdate;
-	private Date editdate;
+	private int mno;
+	private String userid;
+	private String userpw;
+	private String userName;
+	private boolean enabled;
+	private Date regDate;
+	private Date updateDate;
 	private int boradConut;
 	private int commentConut;
 	private int deliveryCount;
+	private List<AuthVo> authList;
 
-	public int getUserno() {
-		return userno;
+	public int getMno() {
+		return mno;
 	}
 
-	public void setUserno(int userno) {
-		this.userno = userno;
+	public void setMno(int mno) {
+		this.mno = mno;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserid() {
+		return userid;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 
-	public String getAuth() {
-		return auth;
+	public String getUserpw() {
+		return userpw;
 	}
 
-	public void setAuth(String auth) {
-		this.auth = auth;
+	public void setUserpw(String userpw) {
+		this.userpw = userpw;
 	}
 
-	public String getJoindate() {
-		return joindate;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setJoindate(String joindate) {
-		this.joindate = joindate;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getPassword() {
-		return password;
+	public boolean isEnabled() {
+		return enabled;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
-	public String getPassword1() {
-		return password1;
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	public void setPassword1(String password1) {
-		this.password1 = password1;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 
-	public String getPassword2() {
-		return password2;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setPassword2(String password2) {
-		this.password2 = password2;
-	}
-
-	public boolean isOut() {
-		return isOut;
-	}
-
-	public void setOut(boolean isOut) {
-		this.isOut = isOut;
-	}
-
-	public Date getRegdate() {
-		return regdate;
-	}
-
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
-	}
-
-	public Date getEditdate() {
-		return editdate;
-	}
-
-	public void setEditdate(Date editdate) {
-		this.editdate = editdate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	public int getBoradConut() {
@@ -121,12 +96,20 @@ public class MemberVo {
 		this.deliveryCount = deliveryCount;
 	}
 
+	public List<AuthVo> getAuthList() {
+		return authList;
+	}
+
+	public void setAuthList(List<AuthVo> authList) {
+		this.authList = authList;
+	}
+
 	@Override
 	public String toString() {
-		return "MemberVo [userno=" + userno + ", username=" + username + ", auth=" + auth + ", joindate=" + joindate
-				+ ", password=" + password + ", password1=" + password1 + ", password2=" + password2 + ", isOut="
-				+ isOut + ", regdate=" + regdate + ", editdate=" + editdate + ", boradConut=" + boradConut
-				+ ", commentConut=" + commentConut + ", deliveryCount=" + deliveryCount + "]";
+		return "MemberVo [mno=" + mno + ", userid=" + userid + ", userpw=" + userpw + ", userName=" + userName
+				+ ", enabled=" + enabled + ", regDate=" + regDate + ", updateDate=" + updateDate + ", boradConut="
+				+ boradConut + ", commentConut=" + commentConut + ", deliveryCount=" + deliveryCount + ", authList="
+				+ authList + "]";
 	}
 
 }

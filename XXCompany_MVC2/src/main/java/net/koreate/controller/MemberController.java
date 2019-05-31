@@ -1,24 +1,19 @@
 package net.koreate.controller;
 
 import javax.inject.Inject;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.WebUtils;
 
-import net.koreate.dto.LoginDto;
 import net.koreate.service.MemberService;
 import net.koreate.vo.MemberVo;
 
@@ -30,6 +25,9 @@ public class MemberController {
 	
 	@Inject
 	MemberService service;
+	
+	@Inject
+	PasswordEncoder passwordEncoder;
 	
 	/*
 	@GetMapping(value = "/") // Spring Framework V4.3
@@ -53,22 +51,17 @@ public class MemberController {
 	}
 	*/
 	
-	@GetMapping(value = "/register") // Spring Framework V4.3
-	public void registerGetMethod() { // Since - 2019/03/26, Content - 회원가입 페이지 호출
-		logger.info("registerGetMethod Called!!!");
+	@GetMapping(value = "/join") // Spring Framework V4.3
+	public void joinGetMethod() { // Since - 2019/03/26, Content - 회원가입 페이지 호출
+		logger.info("joinGetMethod Called!!!");
 	}
 	
-	@PostMapping(value = "/registerCheck") // Spring Framework V4.3
-	public ResponseEntity<String> registerCheckPostMethod(@RequestParam("username") String username) { // Since - 0000/00/00, Content - 콘탠츠
-		logger.info("registerCheckPostMethod Called!!!");
+	@PostMapping(value = "/joinIdCheck") // Spring Framework V4.3
+	public ResponseEntity<String>joinIdCheckPostMethod(@RequestParam("userid") String userid) { // Since - 0000/00/00, Content - 콘탠츠
+		logger.info("joinIdCheckPostMethod Called!!!");
 		ResponseEntity<String> entity = null;
 		try {
-			if (username.contains("<script>")) {
-				System.out.println("ON");
-				entity = new ResponseEntity<>("FAIL", HttpStatus.OK);
-				return entity;
-			}
-			MemberVo vo = service.registerCheckPostMethod(username);
+			MemberVo vo = service.joinIdCheck(userid);
 			if (vo != null) entity = new ResponseEntity<>("FAIL", HttpStatus.OK);
 			else			entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 		}
@@ -78,10 +71,10 @@ public class MemberController {
 		return entity;
 	}
 	
-	@PostMapping(value = "/registerPost") // Spring Framework V4.3
-	public String registerPostMethod(MemberVo vo, Model model) { // Since - 2019/03/26, Content - 회원가입을 할때 호출
-		logger.info("registerPostMethod Called!!!");
-		boolean suss = service.registerPostMethod(vo);
+	@PostMapping(value = "/join") // Spring Framework V4.3
+	public String joinPostMethod(MemberVo vo, Model model) { // Since - 2019/03/26, Content - 회원가입을 할때 호출
+		logger.info("joinPostMethod Called!!!");
+		boolean suss = service.join(vo, passwordEncoder);
 		
 		if (suss) {
 			return "redirect:/member/login";
@@ -91,44 +84,33 @@ public class MemberController {
 		}
 	}
 	
-	@GetMapping(value = "/login") // Spring Framework V4.3
-	public void loginGetMethod() { // Since - 2019/03/26, Content - 로그인 페이지 호출
+	@GetMapping(value = "/login")
+	public void loginGetMethod(String error, String logout, Model model) {
 		logger.info("loginGetMethod Called!!!");
-	}
-	
-	@PostMapping(value = "/loginPost") // Spring Framework V4.3
-	public String loginPostMethod(LoginDto dto, Model model) { // Since - 2019/03/26, Content - 로그인을 할때 호출
-		logger.info("loginPostMethod Called!!!");
-		model.addAttribute("loginDto",dto);
-		return "redirect:/";
+		logger.info("error : " + error);
+		logger.info("logout : " + logout);
+		
+		if (error != null) model.addAttribute("error", "로그인에 실패 하였습니다. 아이디나 비밀번호를 다시 확인 해주세요");
+		
+		if (logout != null) model.addAttribute("logout", "로그아웃이 성공적으로 이루어 졌습니다.");
 	}
 	
 	@GetMapping(value = "/profiles") // Spring Framework V4.3
-	public void profilesGetMethod(@RequestParam(value = "username") String username,
+	public void profilesGetMethod(@RequestParam("userid") String userid,
 			Model model) { // Since - 2019/03/26, Content - 자기자신의 정보를 볼때 호출
-		logger.info("profilesGetMethod Called!!! {}", username);
-		MemberVo vo = service.profilesGetMethod(username);
+		logger.info("profilesGetMethod Called!!! {}", userid);
+		MemberVo vo = service.getProfilesByUserId(userid);
 		model.addAttribute("profile", vo);
 	}
 	
-	@GetMapping(value = "/logout") // Spring Framework V4.3
-	public String logoutGetMethod(HttpServletRequest request, HttpSession session,
-			HttpServletResponse response) { // Since - 2019/03/28, Content - 로그아웃 요청시 호출
+	@GetMapping(value = "/logout")
+	public void logoutGetMethod() {
 		logger.info("logoutGetMethod Called!!!");
-		Object obj = session.getAttribute("member");
-		
-		if(obj != null) {
-			session.removeAttribute("member");
-			session.invalidate();
-			
-			Cookie loginCookie = WebUtils.getCookie(request, "LoginCookie");
-			if(loginCookie != null) {
-				loginCookie.setPath("/");
-				loginCookie.setMaxAge(0);
-				response.addCookie(loginCookie);
-			}
-		}
-		return "redirect:/";
+	}
+	
+	@PostMapping(value = "/logout")
+	public void logoutPostMethod() {
+		logger.info("logoutPostMethod Called!!!");
 	}
 	
 }

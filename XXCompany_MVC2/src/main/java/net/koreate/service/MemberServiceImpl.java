@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import net.koreate.dao.MemberDao;
-import net.koreate.dto.LoginDto;
+import net.koreate.vo.AuthVo;
 import net.koreate.vo.MemberVo;
 
 @Service
@@ -16,88 +16,62 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Inject
 	MemberDao dao;
+	
+	@Override
+	public MemberVo joinIdCheck(String userid) {
+		return dao.joinIdCheck(userid);
+	}
 
 	@Override
-	public boolean registerPostMethod(MemberVo vo) { // Since - 2019/03/27, Content - 회원가입을 할때 호출
-		// TODO Auto-generated method stub
-		String username = vo.getUsername();
-		MemberVo regBefor = dao.regBefor(username);
+	public boolean join(MemberVo vo, PasswordEncoder passwordEncoder) {
+		String userid = vo.getUserid();
+		MemberVo join = joinIdCheck(userid);
+		List<AuthVo> auths = vo.getAuthList();
 		
-		String joindate = vo.getJoindate();
-		String password = vo.getPassword1();
-
-		final String hash = joindate + "/" + username + "/" + password;
+		if (auths != null) auths.add(new AuthVo(userid, "ROLE_USER"));
 		
-		final String passwordHash = BCrypt.hashpw(hash, BCrypt.gensalt(15));
-		vo.setPassword(passwordHash);
+		String encodePassword = passwordEncoder.encode(vo.getUserpw());
+		vo.setUserpw(encodePassword);
 		
-		if (regBefor == null) {
-			dao.registerPostMethod(vo);
+		if (join == null) {
+			dao.join(vo);
+			for (AuthVo auth : auths) dao.joinToAuth(auth);
 			return true;
 		} else {
-			dao.registerUpdatePostMethod(vo);
+			dao.memberUpdate(vo);
+			for (AuthVo auth : auths) dao.memberUpdateToAuth(auth);
 			return true;
 		}
 	}
 
 	@Override
-	public MemberVo Login(LoginDto dto) { // Since - 2019/03/27, Content - 로그인을 할때 호출
-		// TODO Auto-generated method stub
-		return dao.Login(dto);
+	public MemberVo getProfilesByUserId(String userid) {
+		return dao.getProfilesByUserId(userid);
 	}
-
+	
 	@Override
-	public MemberVo profilesGetMethod(String username) { // Since - 2019/03/27, Content - 자기자신의 정보를 볼때 호출
-		// TODO Auto-generated method stub
-		return dao.profilesGetMethod(username);
+	public List<MemberVo> getMemberLists() {
+		return dao.getMemberLists();
 	}
-
+	
 	@Override
-	public void authoritySavePostMethod(MemberVo vo) {
-		// TODO Auto-generated method stub
-		dao.authoritySavePostMethod(vo);
+	public void authoritySave(MemberVo vo) {
+		dao.authoritySave(vo);
 	}
-
+	
 	@Override
-	public List<MemberVo> membersGetMethod() {
-		// TODO Auto-generated method stub
-		return dao.membersGetMethod();
+	public MemberVo getUserInfoById(int userid) {
+		return dao.getUserInfoById(userid);
 	}
-
+	
 	@Override
-	public MemberVo infoPostMethod(int userno) {
-		// TODO Auto-generated method stub
-		return dao.infoPostMethod(userno);
+	public void memberDeleteById(int userid) {
+		dao.memberDeleteById(userid);
 	}
-
+	
 	@Override
-	public void deletePostMethod(int userno) {
-		// TODO Auto-generated method stub
-		dao.deletePostMethod(userno);
+	public String getUserAuthByUserid(String userid) {
+		return dao.getUserAuthByUserid(userid);
 	}
-
-	@Override
-	public MemberVo registerCheckPostMethod(String username) {
-		// TODO Auto-generated method stub
-		return dao.registerCheckPostMethod(username);
-	}
-
-	@Override
-	public String getPasswordHashByDto(LoginDto dto) {
-		// TODO Auto-generated method stub
-		return dao.getPasswordHashByDto(dto);
-	}
-
-	@Override
-	public MemberVo sessionUpdateMethod(MemberVo loginUser) {
-		// TODO Auto-generated method stub
-		return dao.sessionUpdateMethod(loginUser);
-	}
-
-	@Override
-	public String getUserAuthByUsername(String username) {
-		// TODO Auto-generated method stub
-		return dao.getUserAuthByUsername(username);
-	}
-
+	
 }
