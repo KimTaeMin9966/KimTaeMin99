@@ -218,12 +218,11 @@
 							</ul>
 						</li>
 						<!-- User Account: style can be found in dropdown.less -->
-				<c:choose>
-					<c:when test="${!empty member}">
+					<security:authorize access="isAuthenticated()">
 						<li class="dropdown user user-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<img src="/resources/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-								<span class="hidden-xs">[${member.auth}] ${member.username}</span>
+								<span class="hidden-xs">[<security:authentication property="principal.member.authList"/>] <security:authentication property="principal.member.userName"/></span>
 							</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
@@ -255,8 +254,8 @@
 								</li>
 							</ul>
 						</li>
-					</c:when>
-					<c:otherwise>
+					</security:authorize>
+					<security:authorize access="isAnonymous()">
 						<li class="dropdown user user-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<img src="/resources/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
@@ -283,8 +282,7 @@
 								</li>
 							</ul>
 						</li>
-					</c:otherwise>
-				</c:choose>
+					</security:authorize>
 						<!-- Control Sidebar Toggle Button -->
 						<li><a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a></li>
 					</ul>
