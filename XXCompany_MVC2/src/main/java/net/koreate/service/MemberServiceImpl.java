@@ -1,5 +1,6 @@
 package net.koreate.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,13 +23,25 @@ public class MemberServiceImpl implements MemberService {
 		return dao.joinIdCheck(userid);
 	}
 
+	private MemberVo joinIdCheckByVo(MemberVo vo) {
+		return dao.isJoin(vo.getUserid());
+	}
+	
+	private List<AuthVo> addAuth(MemberVo vo) {
+		MemberVo isJoin = joinIdCheckByVo(vo);
+		List<AuthVo> auths = new ArrayList<>();
+		
+		if (isJoin == null) auths.add(new AuthVo(vo.getUserid(), "ROLE_USER"));
+		
+		return auths;
+	}
+	
 	@Override
 	public boolean join(MemberVo vo, PasswordEncoder passwordEncoder) {
-		String userid = vo.getUserid();
-		MemberVo join = joinIdCheck(userid);
-		List<AuthVo> auths = vo.getAuthList();
+		MemberVo join = joinIdCheckByVo(vo);
 		
-		if (auths != null) auths.add(new AuthVo(userid, "ROLE_USER"));
+		List<AuthVo> auths = addAuth(vo);
+		vo.setAuthList(auths);
 		
 		String encodePassword = passwordEncoder.encode(vo.getUserpw());
 		vo.setUserpw(encodePassword);
@@ -43,7 +56,7 @@ public class MemberServiceImpl implements MemberService {
 			return true;
 		}
 	}
-
+	
 	@Override
 	public MemberVo getProfilesByUserId(String userid) {
 		return dao.getProfilesByUserId(userid);

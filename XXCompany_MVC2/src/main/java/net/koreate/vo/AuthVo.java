@@ -4,6 +4,8 @@ public class AuthVo {
 	private String userid;
 	private String auth;
 	
+	public AuthVo() {}
+	
 	public AuthVo(String userid, String auth) {
 		this.userid = userid;
 		this.auth = auth;

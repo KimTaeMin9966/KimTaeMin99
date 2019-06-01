@@ -18,6 +18,7 @@ public interface MemberDao {
 	MemberVo getUserInfoById(int userid);
 	void memberDeleteById(int userid);
 	String getUserAuthByUserid(String userid);
-	MemberVo read(String username);
+	MemberVo read(String userid);
+	MemberVo isJoin(String userid);
 	
 }
