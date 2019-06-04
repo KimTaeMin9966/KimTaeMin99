@@ -26,25 +26,25 @@
 								</div>
 								<!-- /.box-header -->
 								<div class="box-body">
-										<div class="form-group">
-											<label>타입</label>
-											<select name="types" class="form-control">
-												<optgroup label="---">
-													<option value="notification">공지</option>
-													<option value="today">오늘 할일</option>
-													<option value="">잡담</option>
-												</optgroup>
-											</select>
-										</div>
-										<div class="form-group">
-											<label>제목</label>
-											<input name="title" type="text" class="form-control" placeholder="Enter ...">
-										</div>
-										<div class="form-group">
-											<label>내용</label>
-											<textarea name="content" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-										</div>
-										<input type="hidden" value="${member.username}" name="writer">
+									<input type="hidden" value="<security:authentication property="principal.username"/>" name="writer">
+									<div class="form-group">
+										<label>타입</label>
+										<select name="types" class="form-control">
+											<optgroup label="---">
+												<option value="notification">공지</option>
+												<option value="today">오늘 할일</option>
+												<option value="">잡담</option>
+											</optgroup>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>제목</label>
+										<input name="title" type="text" class="form-control" placeholder="Enter ...">
+									</div>
+									<div class="form-group">
+										<label>내용</label>
+										<textarea name="content" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+									</div>
 								</div>
 								<!-- /.box-body -->
 								<div class="box-footer">
